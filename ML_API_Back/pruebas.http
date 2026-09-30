@@ -1,0 +1,11 @@
+### Metodo para ver lista monstruos disponibles
+GET http://localhost:3001/Monstergram
+
+### Metodo para agregar monstruos a la colección
+POST http://localhost:3001/AgregarMonstruo
+
+### Metodo para editar monstruo por nombre
+PUT http://localhost:3001/ModificarMonstruoPorNombre
+
+### Metodo para eliminar un monstruo de la lista por nombre
+DELETE http://localhost:3001/EliminarMonstruoPorNombre

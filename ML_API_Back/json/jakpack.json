@@ -1,0 +1,195 @@
+{
+    "name": "Jakpack",
+    "number": 905,
+    "elements": [
+        "Thunder"
+    ],
+    "rarity": "Mythic",
+    "generation": {
+        "generation_name": "Metropolitan",
+        "generation_image": "IMG Link Here"
+    },
+    "description": "Description Here",
+    "books" : [
+        "Metropolitan Era", "Elektra Patrol", "Superheroes", "Mechanical"
+    ],
+    "sprites": {
+        "egg": "IMG link here",
+        "baby": "IMG link here",
+        "teen": "IMG link here",
+        "adult": "IMG link here",
+        "awakened": "IMG link here"
+    },
+    "traits": [
+        "Anticipation", "Inmune to Shock", "SC: Precision"
+    ],
+    "relics": [
+        "Banner", "Mask", "Street Talents"
+    ],
+    "stats": {
+        "rank0": {
+            "life": 111592,
+            "power": 9713,
+            "speed": 7568,
+            "stamina": 180,
+            "gold": 364
+        },
+        "rank1": {
+            "life": 138912,
+            "power": 11928,
+            "speed": 8520,
+            "stamina": 200,
+            "gold": 364
+        },
+        "rank2": {
+            "life": 170404,
+            "power": 14352,
+            "speed": 9503,
+            "stamina": 220,
+            "gold": 364
+        },
+        "rank3": {
+            "life": 205474,
+            "power": 16226,
+            "speed": 10542,
+            "stamina": 240,
+            "gold": 364
+        },
+        "rank4": {
+            "life": 245273,
+            "power": 19050,
+            "speed": 11610,
+            "stamina": 260,
+            "gold": 364
+        },
+        "rank5":{
+            "life": 312589,
+            "power": 22960,
+            "speed": 13072,
+            "stamina": 280,
+            "gold": 364
+        }
+    },
+    "skillset":[
+        {
+            "name": "Jakpack Taser",
+            "description": "Deals moderate Thunder damage to one enemy. Applies Shock to one enemy.",
+            "ability-type": "Thunder",
+            "target": "One enemy",
+            "effects": [
+                "Shock"
+            ],
+            "accuracy": 100,
+            "damage": 35,
+            "stamina-cost": 30,
+            "cooldown": 0
+
+        },
+        {
+            "name": "Hero Apprentice",
+            "description": "Applies Damage Boost to one ally.",
+            "ability-type": "Thunder",
+            "target": "One ally",
+            "effects": [
+                "Damage Boost"
+            ],
+            "accuracy": 100,
+            "damage": 0,
+            "stamina-cost": 30,
+            "cooldown": 0
+
+        },
+        {
+            "name": "I'll distract him!",
+            "description": "Applies Double Damage to one ally. Requires cooldown.",
+            "ability-type": "Thunder",
+            "target": "One ally",
+            "effects": [
+                "Double Damage"
+            ],
+            "accuracy": 100,
+            "damage": 0,
+            "stamina-cost": 36,
+            "cooldown": 1
+
+        },
+        {
+            "name": "Taser Throw",
+            "description": "Applies Shock to one enemy. Gives 1 extra turn to itself. Requires cooldown",
+            "ability-type": "Thunder",
+            "target": "One enemy",
+            "effects": [
+                "Shock"
+            ],
+            "accuracy": 95,
+            "damage": 0,
+            "stamina-cost": 42,
+            "cooldown": 2
+
+        },
+        {
+            "name": "Found the weakspot",
+            "description": "Deals heavy Thunder damage to one enemy. Applies Damage Boost to all allies. Requires cooldown.",
+            "ability-type": "Thunder",
+            "target": "One enemy",
+            "effects": [
+                "Damage Boost"
+            ],
+            "accuracy": 95,
+            "damage": 50,
+            "stamina-cost": 42,
+            "cooldown": 2
+
+        },
+        {
+            "name": "Come fly with me",
+            "description": "Removes all negative status effects from one ally. Restores all cooldowns on all allies. Applies Precision to all allies. Requires cooldown.",
+            "ability-type": "Special",
+            "target": "One ally",
+            "effects": [
+                "Precision"
+            ],
+            "accuracy": 100,
+            "damage": 0,
+            "stamina-cost": 42,
+            "cooldown": 2
+
+        },
+        {
+            "name": "Flying Taser",
+            "description": "Deals moderate Thunder damage to all enemies. Applies shock to all enemies. Requires cooldown.",
+            "ability-type": "Thunder",
+            "target": "Multiple enemies",
+            "effects": [
+                "Shock"
+            ],
+            "accuracy": 90,
+            "damage": 35,
+            "stamina-cost": 48,
+            "cooldown": 3
+
+        },
+        {
+            "name": "Jakpack Pack",
+            "description": "Restores all cooldowns on all allies. Applies Cooldown Protection and Precision to all allies. Requires cooldown.",
+            "ability-type": "Special",
+            "target": "Multiple allies",
+            "effects": [
+                "Cooldown Protection","Precision"
+            ],
+            "accuracy": 100,
+            "damage": 0,
+            "stamina-cost": 48,
+            "cooldown": 3
+
+        }
+    ],
+    "ult-ability": {
+        "name": "We're the Patrol",
+        "ult-description": "Restores all cooldowns on all allies. Removes all Negative Status Effects and gives 100% Life and Stamina to all allies",
+        "target": "Multiple allies",
+        "effects": [
+            
+        ]
+    }
+}

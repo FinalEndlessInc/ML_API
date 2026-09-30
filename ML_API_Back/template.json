@@ -1,0 +1,97 @@
+{
+    "name": "Name Here",
+    "number": 1,
+    "elements": [
+        "type1", "type2 (optional)"
+    ],
+    "rarity": "Mythic",
+    "generation": {
+        "generation_name": "Original",
+        "generation_image": "IMG Link Here"
+    },
+    "description": "Description Here",
+    "books" : [
+        "book1", "book2", "book3", "book4"
+    ],
+    "sprites": {
+        "egg": "IMG link here",
+        "baby": "IMG link here",
+        "teen": "IMG link here",
+        "adult": "IMG link here",
+        "awakened": "IMG link here"
+    },
+    "traits": [
+        "trait_1", "trait_2", "trait_3"
+    ],
+    "relics": [
+        "relic1", "relic2", "talent"
+    ],
+    "stats": {
+        "rank0": {
+            "life": 0,
+            "power": 0,
+            "speed": 0,
+            "stamina": 0,
+            "gold-revenue": 0
+        },
+        "rank1": {
+            "life": 0,
+            "power": 0,
+            "speed": 0,
+            "stamina": 0,
+            "gold-revenue": 0
+        },
+        "rank2": {
+            "life": 0,
+            "power": 0,
+            "speed": 0,
+            "stamina": 0,
+            "gold-revenue": 0
+        },
+        "rank3": {
+            "life": 0,
+            "power": 0,
+            "speed": 0,
+            "stamina": 0,
+            "gold-revenue": 0
+        },
+        "rank4": {
+            "life": 0,
+            "power": 0,
+            "speed": 0,
+            "stamina": 0,
+            "gold-revenue": 0
+        },
+        "rank5":{
+            "life": 0,
+            "power": 0,
+            "speed": 0,
+            "stamina": 0,
+            "gold-revenue": 0
+        }
+    },
+    "skillset":[
+        {
+            "name": "Skill name",
+            "description": "description name",
+            "ability-type": "type",
+            "target": "single target",
+            "effects": [
+                "effect1","effect2"
+            ],
+            "accuracy": 0,
+            "damage": 0,
+            "stamina-cost": 0,
+            "cooldown": 0
+
+        }
+    ],
+    "ult-ability": {
+        "name": "ult name",
+        "ult-description": "ult description",
+        "target": "all enemies",
+        "effects": [
+            "effect1", "effect2", "effect3"
+        ]
+    }
+}
