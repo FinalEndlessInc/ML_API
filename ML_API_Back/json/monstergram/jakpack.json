@@ -5,23 +5,18 @@
         "Thunder"
     ],
     "rarity": "Mythic",
-    "generation": {
-        "generation_name": "Metropolitan",
-        "generation_image": "IMG Link Here"
-    },
-    "description": "Description Here",
+    "generation": "Metropolitan",
+    "description": "Jakpack's talent is outstanding for a monster of his age. His parents started suspecting that he was special when, at the age of 2, he turned his crib into a hovercraft. He goes to school with all the other young monsters, but he had to combine his education with superhero duty!",
     "books" : [
         "Metropolitan Era", "Elektra Patrol", "Superheroes", "Mechanical"
     ],
     "sprites": {
         "egg": "IMG link here",
         "baby": "IMG link here",
-        "teen": "IMG link here",
-        "adult": "IMG link here",
-        "awakened": "IMG link here"
+        "adult": "IMG link here"
     },
     "traits": [
-        "Anticipation", "Inmune to Shock", "SC: Precision"
+        "Anticipation", "Immune to Shock", "SC: Precision"
     ],
     "relics": [
         "Banner", "Mask", "Street Talents"

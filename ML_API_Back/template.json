@@ -5,10 +5,7 @@
         "type1", "type2 (optional)"
     ],
     "rarity": "Mythic",
-    "generation": {
-        "generation_name": "Original",
-        "generation_image": "IMG Link Here"
-    },
+    "generation": "Original",
     "description": "Description Here",
     "books" : [
         "book1", "book2", "book3", "book4"
@@ -32,42 +29,42 @@
             "power": 0,
             "speed": 0,
             "stamina": 0,
-            "gold-revenue": 0
+            "gold": 0
         },
         "rank1": {
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
-            "gold-revenue": 0
+            "gold": 0
         },
         "rank2": {
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
-            "gold-revenue": 0
+            "gold": 0
         },
         "rank3": {
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
-            "gold-revenue": 0
+            "gold": 0
         },
         "rank4": {
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
-            "gold-revenue": 0
+            "gold": 0
         },
         "rank5":{
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
-            "gold-revenue": 0
+            "gold": 0
         }
     },
     "skillset":[
