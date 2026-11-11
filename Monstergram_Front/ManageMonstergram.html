@@ -4,14 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manejo monstruo</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/managemonstergram.css">
 </head>
 <body>
+
+    <nav>
+        <div id="LogoPagina">
+            <img src="img/ml_api.png" alt="Logo">
+        </div>
+        <div id="EnlacesSuperior">
+            <a href="index.html" class="enlaces_encabezado">Home</a>
+            <a href="" class="enlaces_encabezado">Monstergram</a>
+            <a href="" class="enlaces_encabezado">Documentation</a>
+            <a href="ManageMonstergram.html" id="EditarMonstruo">+</a>
+        </div>
+    </nav>
+
     <div id="apartado_editar" style="display:block">
-        <div class="nombre">Nombre:</div>
-        <div class="numero">ID: </div>
-        <div class="elementos"> Elemento(s):</div>
-        <div class="Descripcion"> Descripcion:</div>
+        <div>Ingresa un monstruo para editar</div>
+        <input type="text">
+        <button onclick="BuscarMonstruo()">Buscar</button>
+        <div id="Cargar_busqueda">
+            <div>Nombre:</div>
+            <input type="text" class="nombre">
+
+            <div>ID: </div>
+            <input type="text" class="numero">
+
+            <div class="elementos"> Elemento(s):</div>
+
+            <div> Descripcion:</div>
+            <textarea class="Descripcion" rows="4" cols="50"></textarea>
+
+            <div class="SubirImagenesMonstruos">
+                <input type="file" id="ImagenPrincipal">
+                <img id="PreviewImagenPrincipal"><br>
+
+                <input type="file" id="ImagenTeen">
+                <img id="PreviewImagenTeen"><br>
+
+                <input type="file" id="ImagenBebe">
+                <img id="PreviewImagenBebe"><br>
+
+                <input type="file" id="ImagenHuevo">
+                <img id="PreviewImagenHuevo"><br>
+
+                <button id="BotonEditar" onclick="CambiarMonstruo()">Actualizar</button><br>
+            </div>
+        </div>
+
+        
+        
+
+        
 
     </div>
 </body>
+<script src="js/ManageMonstergram.js"></script>
 </html>

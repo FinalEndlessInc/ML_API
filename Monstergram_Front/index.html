@@ -3,10 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ML API</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <h1>La monsterlegens api</h1>
+    <nav>
+        <div id="LogoPagina">
+            <img src="img/ml_api.png" alt="Logo">
+        </div>
+        <div id="EnlacesSuperior">
+            <a href="index.html" class="enlaces_encabezado">Home</a>
+            <a href="" class="enlaces_encabezado">Monstergram</a>
+            <a href="" class="enlaces_encabezado">Documentation</a>
+            <a href="ManageMonstergram.html" id="EditarMonstruo">+</a>
+        </div>
+    </nav>
+    
+    <div id="ApartadoBuscador">
+        <div id="BotonBuscar">O</div>
+        <input type="text" id="InputBuscarMonstruo">
+    </div>
+
+    <div id="ExplorarMonstruos">
+        <div id="ConjuntoMonstruos">
+            <div class="TarjetaMonstruo">
+                <div class="NombreTarjetaMonstruo">0000. Jakpack</div>
+                <div class="ImagenFondoMonstruo">
+                </div>
+                <div class="ApartadoAbajo">
+                    <div class="RarezaMonstruo">M</div>
+                    <div class="ElementosMonstruo">1 1
+                    
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ApartadoInformacion">
+        Aquí va a ir la introduccion y demás
+    </div>
+
+    <!--
     <div>Ingresa un monstruo para editar</div>
     <input type="text">
     <button onclick="BuscarMonstruo()">Buscar</button>
@@ -18,8 +58,10 @@
         <div class="Descripcion"> Descripcion:</div>
 
     </div>
+    -->
 
-    <a href="ManageMonstergram.html">Editar monstruo</a>
+    
 </body>
+<script src="js/global.js"></script>
 <script src="js/index.js"></script>
 </html>

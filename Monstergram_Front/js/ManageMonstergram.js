@@ -1,0 +1,103 @@
+const PaginaEditar = document.querySelector("#apartado_editar");
+const CargarBusqueda = document.querySelector("#Cargar_busqueda");
+
+const direccion = "http://localhost:3001/monstergram/";
+
+const Nombre = PaginaEditar.querySelector(".nombre");
+const ID = PaginaEditar.querySelector(".numero");
+const Descripcion = PaginaEditar.querySelector(".Descripcion");
+const Elementos = PaginaEditar.querySelector(".elementos");
+var Nombre_antiguo;
+
+const InputImagenPrincipal = PaginaEditar.querySelector("#ImagenPrincipal");
+const PreviewImagenPrincipal = PaginaEditar.querySelector("#PreviewImagenPrincipal");
+
+const InputImagenTeen = PaginaEditar.querySelector("#ImagenTeen");
+const PreviewImagenTeen = PaginaEditar.querySelector("#PreviewImagenTeen");
+
+const InputImagenBebe = PaginaEditar.querySelector("#ImagenBebe");
+const PreviewImagenBebe = PaginaEditar.querySelector("#PreviewImagenBebe");
+
+const InputImagenHuevo = PaginaEditar.querySelector("#ImagenHuevo");
+const PreviewImagenHuevo = PaginaEditar.querySelector("#PreviewImagenHuevo");
+
+function BuscarMonstruo(){
+    const boton_input = document.querySelector("input");
+
+    if(boton_input.value == ""){
+        alert("Selecciona un monstruo para continuar");
+        return;
+    }
+
+    Elementos.innerHTML = "";
+
+    fetch(direccion + boton_input.value).then(recurso => recurso.json()).then( monstruo => {
+        console.log(monstruo);
+
+        CargarBusqueda.style.display = "block";
+        
+        Nombre.value = monstruo.name;
+        Nombre_antiguo = monstruo.name;
+        ID.value = monstruo.number;
+        Descripcion.value = monstruo.description;
+        for(i = 0; i < monstruo.elements.length; i++){
+            Elementos.innerHTML += " " + monstruo.elements[i];
+        }
+    });
+}
+
+InputImagenPrincipal.addEventListener("change", function(){
+    const archivo = InputImagenPrincipal.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(archivo);
+    reader.onload = function(){
+        PreviewImagenPrincipal.src = reader.result;
+    }
+});
+
+InputImagenTeen.addEventListener("change", function(){
+    const archivo = InputImagenTeen.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(archivo);
+    reader.onload = function(){
+        PreviewImagenTeen.src = reader.result;
+    }
+});
+
+InputImagenBebe.addEventListener("change", function(){
+    const archivo = InputImagenBebe.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(archivo);
+    reader.onload = function(){
+        PreviewImagenBebe.src = reader.result;
+    }
+});
+
+InputImagenHuevo.addEventListener("change", function(){
+    const archivo = InputImagenHuevo.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(archivo);
+    reader.onload = function(){
+        PreviewImagenHuevo.src = reader.result;
+    }
+});
+
+function CambiarMonstruo(){
+
+    if(Nombre.value == ""){
+        alert("No se ha seleccionado ningun monstruo");
+        return;
+    }
+
+    const objeto_editar_monstruo = {
+        old_name: Nombre_antiguo,
+        new_name: Nombre.value,
+        number: ID.value,
+        description: Descripcion.value,
+        egg: PreviewImagenHuevo.src,
+        baby: PreviewImagenBebe.src,
+        teen: PreviewImagenTeen.src,
+        adult: PreviewImagenPrincipal.src
+    }
+    console.log(objeto_editar_monstruo);
+}

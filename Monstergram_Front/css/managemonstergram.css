@@ -1,0 +1,14 @@
+.SubirImagenesMonstruos{
+    display: flex;
+    flex-direction: column;
+}
+
+#PreviewImagenPrincipal, #PreviewImagenTeen, #PreviewImagenBebe, #PreviewImagenHuevo{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+#Cargar_busqueda{
+    display: none;
+}

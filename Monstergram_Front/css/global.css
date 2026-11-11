@@ -1,0 +1,89 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+a{
+    color:white;
+    text-decoration: none;
+    float: left;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    height: 60px;
+    margin: 0 50px;
+}
+
+a:hover{
+    color: #AAFFFF;
+}
+
+body{
+    background-color: #071F52;
+    color: white;
+    font-family: Bahnschrift, Verdana, Arial, sans-serif;
+}
+
+nav{
+    position:sticky;
+    top: 0;
+    left: 0;
+    width: calc(100% - 140px);
+    background-color: #102834;
+    padding: 5px;
+    padding-left: 70px;
+    padding-right: 70px;
+    height: 60px;
+    z-index: 5;
+}
+
+#LogoPagina img {
+    float: left;
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+#LogoPagina img:hover{
+    cursor: pointer;
+}
+
+#EditarMonstruo{
+    float: right;
+}
+
+#ApartadoBuscador{
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: calc(100% - 140px);
+    background-color: #004F6E;
+    padding: 5px;
+    padding-left: 70px;
+    padding-right: 70px;
+    height: 50px;
+}
+
+#InputBuscarMonstruo {
+    float: right;
+    height: 35px;
+    width: 250px;
+    font-size: 15px;
+    margin: 0px 15px;
+    border: none;
+}
+
+#BotonBuscar {
+    float: right;
+    height: 35px;
+    width: 35px;
+    background-color: red;
+    border: none;
+}
+
+#BotonBuscar:hover{
+    background-color: rgb(179, 7, 7);
+}

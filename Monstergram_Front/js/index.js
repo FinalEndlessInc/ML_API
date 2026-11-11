@@ -1,4 +1,4 @@
-const ApartadoMonstruoPrueba = document.querySelector("#apartado_monstruo_prueba");
+/*const ApartadoMonstruoPrueba = document.querySelector("#apartado_monstruo_prueba");
 const EditarMonstruo = document.querySelector("#editar_monstruo");
 
 const direccion = "http://localhost:3001/monstergram/";
@@ -12,4 +12,5 @@ function BuscarMonstruo(){
         const nombre_monstruo = ApartadoMonstruoPrueba.querySelector(".nombre");
         nombre_monstruo.innerHTML = "Nombre: " + monstruo.name;
     });
-}
+}*/
+

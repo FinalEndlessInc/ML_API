@@ -1,0 +1,50 @@
+#ExplorarMonstruos{
+    float: left;
+    margin: 25px;
+    width: 900px;
+    background-color: #255E71;
+    border-radius: 10px;
+}
+
+.TarjetaMonstruo{
+    float: left;
+    position: relative;
+    height: 200px;
+    width: 150px;
+    background-color: #27286A;
+    border-radius: 15px;
+    border: solid 3px #3892A4;
+    margin: 20px;
+}
+
+.NombreTarjetaMonstruo{
+    top: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgba(10, 10, 10, 0.752);
+    border-radius: 15px 15px 0px 0px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+}
+
+.ApartadoAbajo{
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    background-color: rgba(10, 10, 10, 0.752);
+    border-radius: 0px 0px 15px 15px;
+}
+
+#ApartadoInformacion{
+    float: right;
+    width: 400px;
+    background-color: #FFD368;
+    border-radius: 10px;
+    margin: 25px;
+    color: brown;
+}
