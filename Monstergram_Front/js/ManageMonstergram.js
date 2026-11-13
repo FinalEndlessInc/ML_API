@@ -40,7 +40,6 @@ function BuscarMonstruo(){
             }
         
             console.log(monstruo);
-            alert("Empieza a editar chaval");
             CargarBusqueda.style.display = "block";
             
             Nombre.value = monstruo.name;
@@ -50,6 +49,10 @@ function BuscarMonstruo(){
             for(i = 0; i < monstruo.elements.length; i++){
                 Elementos.innerHTML += " " + monstruo.elements[i];
             }
+            PreviewImagenPrincipal.src = monstruo.sprites.adult;
+            PreviewImagenTeen.src = monstruo.sprites.teen;
+            PreviewImagenHuevo.src = monstruo.sprites.egg;
+            PreviewImagenBebe.src = monstruo.sprites.baby;
         }
 
         )
@@ -118,6 +121,7 @@ function CambiarMonstruo(){
             alert(respuesta.message);
         }else{
             alert(respuesta.message);
+            window.location.reload()
         }
     }));
 }

@@ -134,15 +134,24 @@ const server = http.createServer((request, response) => {
                     }
 
                     console.log(monstruo_ha_editar);
-
-
-                    response.statusCode = 200;
-                    response.setHeader("Content-Type", "application/json");
-                    response.end(JSON.stringify({
-                        message: "Monster is editable"
-                    }));
-
-
+                    fs.writeFile("./json/monstergram/" + monstruo_ha_editar.name.toLowerCase().replace(" ", "-") + ".json", JSON.stringify(monstruo_ha_editar), err => {
+                        if(err){
+                            console.log(err);
+                            response.statusCode = 400;
+                            response.setHeader("Content-Type", "application/json");
+                            response.end(JSON.stringify({
+                                message: "Something went wrong"
+                            }));
+                            
+                        }
+                        else{
+                            response.statusCode = 200;
+                            response.setHeader("Content-Type", "application/json");
+                            response.end(JSON.stringify({
+                                message: "Monster info updated"
+                            }));
+                        }
+                    });
                 }
             });
 
