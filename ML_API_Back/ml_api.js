@@ -60,13 +60,13 @@ const server = http.createServer((request, response) => {
                         monstruoEncontrado = true;
                         break;
                     }
-
                 }
             if(monstruoEncontrado == false){
                     response.statusCode = 404;
-                    response.setHeader("Content-Type", "text/html; charset=utf-8");
-
-                    response.end("<h1>Eh, no se encontró a ese monstruo</h1>");    
+                    response.setHeader("Content-Type", "application/json");
+                    response.end(JSON.stringify({
+                        message: "No he podido encontrar a ese monstruo"
+                    }));    
                 }
         }
 
@@ -85,20 +85,25 @@ const server = http.createServer((request, response) => {
             });
             request.on("end", () => {
                 const objeto_monstruo_editar = JSON.parse(informacion);
+                
                 // Este es para agregar las imagenes - ES DE PRUEBA
-
                 if(request.url == "/EditarImagenes"){
                     console.log(objeto_monstruo_editar);
                     var monstruo_encontrado = false;
+                    var monstruo_ha_editar;
 
+                    // Buscando si el monstruo coincide con alguno de los que ya están registrados
                     for(i = 0; i < arregloMonstruos.length; i++){
                         console.log(objeto_monstruo_editar.old_name);
                         console.log(arregloMonstruos[i].name);
                         if(objeto_monstruo_editar.old_name == arregloMonstruos[i].name){
+                            monstruo_ha_editar = arregloMonstruos[i];
                             monstruo_encontrado = true;
                             break;
                         }
                     }
+
+                    // Error si no
                     if(monstruoEncontrado == false){
                         console.log("No se encontró a ese monstruo");
                         response.statusCode = 404;
@@ -109,12 +114,35 @@ const server = http.createServer((request, response) => {
                         return;
                     }
 
+                    // Todo lo demas
                     console.log("Encontramos al monstruo a editar");
+                    console.log(monstruo_ha_editar);
+
+                    // Cambiando cada valor
+                    monstruo_ha_editar.name = objeto_monstruo_editar.new_name;
+                    monstruo_ha_editar.number = objeto_monstruo_editar.number;
+                    monstruo_ha_editar.description = objeto_monstruo_editar.description;
+
+                    monstruo_ha_editar.sprites.egg = objeto_monstruo_editar.egg;
+                    monstruo_ha_editar.sprites.baby = objeto_monstruo_editar.baby;
+                    monstruo_ha_editar.sprites.adult = objeto_monstruo_editar.adult;
+
+                    if(monstruo_ha_editar.sprites.teen == undefined || monstruo_ha_editar.teen == "undefined"){
+                        console.log("Este monstruo no tiene fase teen");
+                    }else{
+                        monstruo_ha_editar.teen = objeto_monstruo_editar.teen;
+                    }
+
+                    console.log(monstruo_ha_editar);
+
+
                     response.statusCode = 200;
                     response.setHeader("Content-Type", "application/json");
                     response.end(JSON.stringify({
                         message: "Monster is editable"
                     }));
+
+
                 }
             });
 

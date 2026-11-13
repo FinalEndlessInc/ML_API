@@ -31,18 +31,28 @@ function BuscarMonstruo(){
 
     Elementos.innerHTML = "";
 
-    fetch(direccion + boton_input.value).then(recurso => recurso.json()).then( monstruo => {
-        console.log(monstruo);
-
-        CargarBusqueda.style.display = "block";
+    fetch(direccion + boton_input.value).then(recurso => {
+        recurso.json().then( monstruo => {
+            if(recurso.status == 404){
+                alert(monstruo.message);
+                CargarBusqueda.style.display = "none";
+                return;
+            }
         
-        Nombre.value = monstruo.name;
-        Nombre_antiguo = monstruo.name;
-        ID.value = monstruo.number;
-        Descripcion.value = monstruo.description;
-        for(i = 0; i < monstruo.elements.length; i++){
-            Elementos.innerHTML += " " + monstruo.elements[i];
+            console.log(monstruo);
+            alert("Empieza a editar chaval");
+            CargarBusqueda.style.display = "block";
+            
+            Nombre.value = monstruo.name;
+            Nombre_antiguo = monstruo.name;
+            ID.value = monstruo.number;
+            Descripcion.value = monstruo.description;
+            for(i = 0; i < monstruo.elements.length; i++){
+                Elementos.innerHTML += " " + monstruo.elements[i];
+            }
         }
+
+        )
     });
 }
 
