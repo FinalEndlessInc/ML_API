@@ -22,35 +22,51 @@
     </nav>
 
     <div id="apartado_editar" style="display:block">
-        <div>Ingresa un monstruo para editar</div>
+        <div>Search a monster to edit: </div>
         <input type="text">
-        <button onclick="BuscarMonstruo()">Buscar</button>
+        <button onclick="BuscarMonstruo()">Search</button>
         <div id="Cargar_busqueda">
-            <div>Nombre:</div>
+            <div>Name:</div>
             <input type="text" class="nombre">
 
             <div>ID: </div>
             <input type="text" class="numero">
 
-            <div class="elementos"> Elemento(s):</div>
+            <div class="elementos"> Element(s):</div>
 
-            <div> Descripcion:</div>
+            <div> Description:</div>
             <textarea class="Descripcion" rows="4" cols="50"></textarea>
 
+            <label for="rareza">Rarity: </label>
+            <select name="rareza" id="Rareza">
+                <option value="Common">Common</option>
+                <option value="Uncommon">Uncommon</option>
+                <option value="Rare">Rare</option>
+                <option value="Epic">Epic</option>
+                <option value="Legendary">Legendary</option>
+                <option value="Mythic">Mythic</option>
+                <option value="Arquitect">Arquitect</option>
+            </select>
+
+
             <div class="SubirImagenesMonstruos">
+                <h2>Adult/Main Image</h2>
                 <input type="file" id="ImagenPrincipal">
                 <img id="PreviewImagenPrincipal"><br>
 
+                <h2>Teen Image (Optional)</h2>
                 <input type="file" id="ImagenTeen">
                 <img id="PreviewImagenTeen"><br>
 
+                <h2>Baby Image</h2>
                 <input type="file" id="ImagenBebe">
                 <img id="PreviewImagenBebe"><br>
 
+                <h2>Egg Image</h2>
                 <input type="file" id="ImagenHuevo">
                 <img id="PreviewImagenHuevo"><br>
 
-                <button id="BotonEditar" onclick="CambiarMonstruo()">Actualizar</button><br>
+                <!--button id="BotonEditar" onclick="CambiarMonstruo()">Actualizar</button--><br>
             </div>
         </div>
 

@@ -7,6 +7,7 @@ const Nombre = PaginaEditar.querySelector(".nombre");
 const ID = PaginaEditar.querySelector(".numero");
 const Descripcion = PaginaEditar.querySelector(".Descripcion");
 const Elementos = PaginaEditar.querySelector(".elementos");
+const Rareza = PaginaEditar.querySelector("#Rareza");
 var Nombre_antiguo;
 
 const InputImagenPrincipal = PaginaEditar.querySelector("#ImagenPrincipal");
@@ -46,6 +47,7 @@ function BuscarMonstruo(){
             Nombre_antiguo = monstruo.name;
             ID.value = monstruo.number;
             Descripcion.value = monstruo.description;
+            Rareza.value = monstruo.rarity;
             for(i = 0; i < monstruo.elements.length; i++){
                 Elementos.innerHTML += " " + monstruo.elements[i];
             }
