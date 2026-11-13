@@ -85,8 +85,41 @@ const server = http.createServer((request, response) => {
             });
             request.on("end", () => {
                 const objeto_monstruo_editar = JSON.parse(informacion);
-                console.log(objeto_monstruo_editar);
+                // Este es para agregar las imagenes - ES DE PRUEBA
+
+                if(request.url == "/EditarImagenes"){
+                    console.log(objeto_monstruo_editar);
+                    var monstruo_encontrado = false;
+
+                    for(i = 0; i < arregloMonstruos.length; i++){
+                        console.log(objeto_monstruo_editar.old_name);
+                        console.log(arregloMonstruos[i].name);
+                        if(objeto_monstruo_editar.old_name == arregloMonstruos[i].name){
+                            monstruo_encontrado = true;
+                            break;
+                        }
+                    }
+                    if(monstruoEncontrado == false){
+                        console.log("No se encontró a ese monstruo");
+                        response.statusCode = 404;
+                        response.setHeader("Content-Type", "application/json");
+                        response.end(JSON.stringify({
+                            message: "Couldn't find that monster"
+                        }));
+                        return;
+                    }
+
+                    console.log("Encontramos al monstruo a editar");
+                    response.statusCode = 200;
+                    response.setHeader("Content-Type", "application/json");
+                    response.end(JSON.stringify({
+                        message: "Monster is editable"
+                    }));
+                }
             });
+
+            
+            
         break;
 
         case "DELETE":

@@ -99,5 +99,15 @@ function CambiarMonstruo(){
         teen: PreviewImagenTeen.src,
         adult: PreviewImagenPrincipal.src
     }
-    console.log(objeto_editar_monstruo);
+    
+    fetch(url_endpoint + "/EditarImagenes", {
+        method: "PUT",
+        body: JSON.stringify(objeto_editar_monstruo)
+    }).then(recurso => recurso.json().then(respuesta => {
+        if(recurso.status == 404){
+            alert(respuesta.message);
+        }else{
+            alert(respuesta.message);
+        }
+    }));
 }
