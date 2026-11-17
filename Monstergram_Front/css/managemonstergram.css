@@ -12,3 +12,28 @@
 #Cargar_busqueda{
     display: none;
 }
+
+#ContenedorStadisticas{
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
+    background-color: antiquewhite;
+    padding: 2%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.PlantillaStats{
+    width: 80%;
+    height: fit-content;
+    margin: 0 auto;
+    padding: 2% 5%;
+    background-color: darkblue;
+
+}
+
+.PlantillaStats::-webkit-scrollbar{
+    width: 10px;
+}

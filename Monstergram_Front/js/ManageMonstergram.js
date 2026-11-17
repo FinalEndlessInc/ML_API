@@ -1,5 +1,7 @@
 const PaginaEditar = document.querySelector("#apartado_editar");
 const CargarBusqueda = document.querySelector("#Cargar_busqueda");
+const PlantillaStats = document.querySelector(".PlantillaStats");
+const ContenedorStats = document.querySelector("#ContenedorStadisticas");
 
 const direccion = "http://localhost:3001/monstergram/";
 
@@ -21,6 +23,8 @@ const PreviewImagenBebe = PaginaEditar.querySelector("#PreviewImagenBebe");
 
 const InputImagenHuevo = PaginaEditar.querySelector("#ImagenHuevo");
 const PreviewImagenHuevo = PaginaEditar.querySelector("#PreviewImagenHuevo");
+
+PlantillaStats.remove();
 
 function BuscarMonstruo(){
     const boton_input = document.querySelector("input");
@@ -50,6 +54,29 @@ function BuscarMonstruo(){
             Rareza.value = monstruo.rarity;
             for(i = 0; i < monstruo.elements.length; i++){
                 Elementos.innerHTML += " " + monstruo.elements[i];
+            }
+            for(i=0; i < 6; i++){
+                const seleccionarRango = "rank" + [i];
+                const clon_stats = PlantillaStats.cloneNode(true);
+                ContenedorStats.appendChild(clon_stats);
+
+                const Rango = clon_stats.querySelector(".Rango");
+                Rango.innerHTML = "Rank " + monstruo.stats[i].rank;
+
+                const Life = clon_stats.querySelector(".Life");
+                Life.value = monstruo.stats[i].life;
+
+                const Power = clon_stats.querySelector(".Power");
+                Power.value = monstruo.stats[i].power;
+
+                const Speed = clon_stats.querySelector(".Speed");
+                Speed.value = monstruo.stats[i].speed;
+
+                const Stamina = clon_stats.querySelector(".Stamina");
+                Stamina.value = monstruo.stats[i].stamina;
+
+                const Gold = clon_stats.querySelector(".Gold");
+                Gold.value = monstruo.stats[i].gold;
             }
             PreviewImagenPrincipal.src = monstruo.sprites.adult;
             PreviewImagenTeen.src = monstruo.sprites.teen;

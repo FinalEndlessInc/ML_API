@@ -28,50 +28,56 @@
         "Mask",
         "Street Talents"
     ],
-    "stats": {
-        "rank0": {
+    "stats": [
+        {
+            "rank": 0,
             "life": 111592,
             "power": 9713,
             "speed": 7568,
             "stamina": 180,
             "gold": 364
         },
-        "rank1": {
+        {
+            "rank": 1,
             "life": 138912,
             "power": 11928,
             "speed": 8520,
             "stamina": 200,
             "gold": 364
         },
-        "rank2": {
+        {
+            "rank": 2,
             "life": 170404,
             "power": 14352,
             "speed": 9503,
             "stamina": 220,
             "gold": 364
         },
-        "rank3": {
+        {
+            "rank": 3,
             "life": 205474,
             "power": 16226,
             "speed": 10542,
             "stamina": 240,
             "gold": 364
         },
-        "rank4": {
+        {
+            "rank": 4,
             "life": 245273,
             "power": 19050,
             "speed": 11610,
             "stamina": 260,
             "gold": 364
         },
-        "rank5": {
+        {
+            "rank": 5,
             "life": 312589,
             "power": 22960,
             "speed": 13072,
             "stamina": 280,
             "gold": 364
         }
-    },
+    ],
     "skillset": [
         {
             "name": "Jakpack Taser",
