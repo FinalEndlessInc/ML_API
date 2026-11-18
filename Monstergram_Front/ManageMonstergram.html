@@ -32,7 +32,34 @@
             <div>ID: </div>
             <input type="text" class="numero">
 
-            <div class="elementos"> Element(s):</div>
+            
+            <label for="elementos">Elements:</label>
+            <select name="elementos" class="elementos" id="element1">
+                <option value="Fire">Fire</option>
+                <option value="Nature">Nature</option>
+                <option value="Earth">Earth</option>
+                <option value="Thunder">Thunder</option>
+                <option value="Water">Water</option>
+                <option value="Dark">Dark</option>
+                <option value="Magic">Magic</option>
+                <option value="Light">Light</option>
+                <option value="Special">Special</option>
+                <option value="Metal">Metal</option>
+            </select>
+
+            <select name="elementos" class="elementos" id="element2">
+                <option value="None">None</option>
+                <option value="Fire">Fire</option>
+                <option value="Nature">Nature</option>
+                <option value="Earth">Earth</option>
+                <option value="Thunder">Thunder</option>
+                <option value="Water">Water</option>
+                <option value="Dark">Dark</option>
+                <option value="Magic">Magic</option>
+                <option value="Light">Light</option>
+                <option value="Special">Special</option>
+                <option value="Metal">Metal</option>
+            </select>
 
             <div> Description:</div>
             <textarea class="Descripcion" rows="4" cols="50"></textarea>
@@ -47,6 +74,46 @@
                 <option value="Mythic">Mythic</option>
                 <option value="Arquitect">Arquitect</option>
             </select>
+
+            <div id="ContenedorReliquias">
+                <div id="PlantillaReliquia">
+                    <label for="reliquias" class="Reliquia">Relics</label>
+                    <select name="reliquias" id="reliquia1" class="reliquias">
+                        <option value="Sword">Sword</option>
+                        <option value="Mask">Mask</option>
+                        <option value="Essence">Essence</option>
+                        <option value="Amulet">Amulet</option>
+                        <option value="Trap">Trap</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Armor">Armor</option>
+                        <option value="Shield">Shield</option>
+                        <option value="Banner">Banner</option>
+                    </select>
+                    
+                    <select name="reliquias" id="reliquia2" class="reliquias">
+                        <option value="None">None</option>
+                        <option value="Sword">Sword</option>
+                        <option value="Mask">Mask</option>
+                        <option value="Essence">Essence</option>
+                        <option value="Amulet">Amulet</option>
+                        <option value="Trap">Trap</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Armor">Armor</option>
+                        <option value="Shield">Shield</option>
+                        <option value="Banner">Banner</option>
+                    </select>
+
+                    <select name="talentos" id="talentos">
+                        <option value="None">None</option>
+                        <option value="Obscure Talents">Obscure Talents</option>
+                        <option value="Street Talents">Street Talents</option>
+                        <option value="Doomed Talents">Doomed Talents</option>
+                        <option value="Blossom Talents">Blossom Talents</option>
+                        <option value="Galactic Talents">Galactic Talents</option>
+
+                    </select>
+                </div>
+            </div>
 
             <div id="ContenedorStadisticas">
                 <div class="PlantillaStats">
@@ -64,7 +131,7 @@
             <div id="ContenedorHabilidades">
                 <div class="PlantillaHabilidad">
                     <input type="text" name="" class="ss_nombre">
-                    <input type="text" name="" class="ss_descripcion">
+                    <textarea class="ss_descripcion" rows="4" cols="50"></textarea>
                     <input type="text" name="" class="ss_tipo">
                     <input type="text" name="" class="ss_objetivo">
                     <div class="EfectosHabilidad">
@@ -74,6 +141,14 @@
                     <input type="number" name="" class="ss_danio">
                     <input type="number" name="" class="ss_costo">
                     <input type="number" name="" class="ss_recuperacion">
+                </div>
+
+                <div id="habilidad_ult">
+                    <p>Ult</p>
+                    <input type="text" id="ult_nombre">
+                    <textarea id="ult_descripcion" rows="4" cols="50"></textarea>
+                    <input type="text" id="ult_objetivo">
+                    <!--input type="text" id="ult_efectos"-->
                 </div>
             </div>
 

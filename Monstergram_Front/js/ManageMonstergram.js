@@ -2,6 +2,10 @@ const PaginaEditar = document.querySelector("#apartado_editar");
 const CargarBusqueda = document.querySelector("#Cargar_busqueda");
 const PlantillaStats = document.querySelector(".PlantillaStats");
 const ContenedorStats = document.querySelector("#ContenedorStadisticas");
+const ContenedorHabilidades = document.querySelector("#ContenedorHabilidades");
+const PlantillaHabilidad = document.querySelector(".PlantillaHabilidad");
+const HabilidadUlt = document.querySelector("#habilidad_ult");
+
 
 const direccion = "http://localhost:3001/monstergram/";
 
@@ -25,6 +29,8 @@ const InputImagenHuevo = PaginaEditar.querySelector("#ImagenHuevo");
 const PreviewImagenHuevo = PaginaEditar.querySelector("#PreviewImagenHuevo");
 
 PlantillaStats.remove();
+PlantillaHabilidad.remove();
+HabilidadUlt.remove();
 
 function BuscarMonstruo(){
     const boton_input = document.querySelector("input");
@@ -52,11 +58,23 @@ function BuscarMonstruo(){
             ID.value = monstruo.number;
             Descripcion.value = monstruo.description;
             Rareza.value = monstruo.rarity;
-            for(i = 0; i < monstruo.elements.length; i++){
-                Elementos.innerHTML += " " + monstruo.elements[i];
+
+
+            // Ver elementos
+
+            const elemento1 = querySelector("#element1");
+            const elemento2 = querySelector("#element2");
+
+            if(monstruo.elements.length == 1){
+                elemento1.value = monstruo.elements[0];
+                elemento2.value = "None";
+            }else{
+                elemento1.value = monstruo.elements[0];
+                elemento2.value = monstruo.elements[1];
             }
+
+            // Ver estadisticas
             for(i=0; i < 6; i++){
-                const seleccionarRango = "rank" + [i];
                 const clon_stats = PlantillaStats.cloneNode(true);
                 ContenedorStats.appendChild(clon_stats);
 
@@ -78,6 +96,49 @@ function BuscarMonstruo(){
                 const Gold = clon_stats.querySelector(".Gold");
                 Gold.value = monstruo.stats[i].gold;
             }
+
+            //Ver habilidades
+            for(i=0; i < monstruo.skillset.length; i++){
+                const clon_skills = PlantillaHabilidad.cloneNode(true);
+                ContenedorHabilidades.appendChild(clon_skills);
+
+                const ss_nombre = clon_skills.querySelector(".ss_nombre");
+                ss_nombre.value = monstruo.skillset[i].name;
+    
+                const ss_descripcion = clon_skills.querySelector(".ss_descripcion");
+                ss_descripcion.value = monstruo.skillset[i].description;
+
+                const ss_tipo = clon_skills.querySelector(".ss_tipo");
+                ss_tipo.value = monstruo.skillset[i].ability_type;
+
+                const ss_objetivo = clon_skills.querySelector(".ss_objetivo");
+                ss_objetivo.value = monstruo.skillset[i].target;
+
+                const ss_precision = clon_skills.querySelector(".ss_precision");
+                ss_precision.value = monstruo.skillset[i].accuracy;
+
+                const ss_danio = clon_skills.querySelector(".ss_danio");
+                ss_danio.value = monstruo.skillset[i].damage;
+
+                const ss_costo = clon_skills.querySelector(".ss_costo");
+                ss_costo.value = monstruo.skillset[i].stamina_cost;
+
+                const ss_recuperacion = clon_skills.querySelector(".ss_recuperacion");
+                ss_recuperacion.value = monstruo.skillset[i].cooldown;
+            }
+
+            const ult_nombre = HabilidadUlt.querySelector("#ult_nombre");
+            ult_nombre.value = monstruo.ult_ability.name;
+
+            const ult_descripcion = HabilidadUlt.querySelector("#ult_descripcion");
+            ult_descripcion.value = monstruo.ult_ability.name;
+
+            const ult_objetivo = HabilidadUlt.querySelector("#ult_objetivo");
+            ult_objetivo.value = monstruo.ult_ability.target;
+
+            ContenedorHabilidades.appendChild(HabilidadUlt);
+
+
             PreviewImagenPrincipal.src = monstruo.sprites.adult;
             PreviewImagenTeen.src = monstruo.sprites.teen;
             PreviewImagenHuevo.src = monstruo.sprites.egg;
