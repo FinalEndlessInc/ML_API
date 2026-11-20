@@ -5,6 +5,9 @@ const ContenedorStats = document.querySelector("#ContenedorStadisticas");
 const ContenedorHabilidades = document.querySelector("#ContenedorHabilidades");
 const PlantillaHabilidad = document.querySelector(".PlantillaHabilidad");
 const HabilidadUlt = document.querySelector("#habilidad_ult");
+const ContenedorAtributos = document.querySelector("#ContenedorAtributos");
+const Libros = document.getElementsByClassName("libros");
+const Inputs = document.querySelector("input");
 
 
 const direccion = "http://localhost:3001/monstergram/";
@@ -14,6 +17,7 @@ const ID = PaginaEditar.querySelector(".numero");
 const Descripcion = PaginaEditar.querySelector(".Descripcion");
 const Elementos = PaginaEditar.querySelector(".elementos");
 const Rareza = PaginaEditar.querySelector("#Rareza");
+const Atributos = PaginaEditar.querySelector(".atributos");
 var Nombre_antiguo;
 
 const InputImagenPrincipal = PaginaEditar.querySelector("#ImagenPrincipal");
@@ -31,16 +35,19 @@ const PreviewImagenHuevo = PaginaEditar.querySelector("#PreviewImagenHuevo");
 PlantillaStats.remove();
 PlantillaHabilidad.remove();
 HabilidadUlt.remove();
+Atributos.remove();
 
 function BuscarMonstruo(){
-    const boton_input = document.querySelector("input");
+    const boton_input = document.querySelector("#input_buscar");
+    console.log(boton_input.value);
+
 
     if(boton_input.value == ""){
         alert("Selecciona un monstruo para continuar");
         return;
     }
 
-    Elementos.innerHTML = "";
+    //Elementos.innerHTML = "";
 
     fetch(direccion + boton_input.value).then(recurso => {
         recurso.json().then( monstruo => {
@@ -49,7 +56,6 @@ function BuscarMonstruo(){
                 CargarBusqueda.style.display = "none";
                 return;
             }
-        
             console.log(monstruo);
             CargarBusqueda.style.display = "block";
             
@@ -62,15 +68,55 @@ function BuscarMonstruo(){
 
             // Ver elementos
 
-            const elemento1 = querySelector("#element1");
-            const elemento2 = querySelector("#element2");
+            const elemento1 = document.querySelector("#element1");
+            const elemento2 = document.querySelector("#element2");
 
-            if(monstruo.elements.length == 1){
-                elemento1.value = monstruo.elements[0];
+            elemento1.value = monstruo.elements[0];
+
+            if(monstruo.elements.length == 1){    
                 elemento2.value = "None";
             }else{
-                elemento1.value = monstruo.elements[0];
                 elemento2.value = monstruo.elements[1];
+            }
+
+            // Ver atributos
+            for(i = 0; i < monstruo.traits.length; i++){
+                const clon_atributo = Atributos.cloneNode(true);
+                ContenedorAtributos.appendChild(clon_atributo);
+
+                clon_atributo.value = monstruo.traits[i];
+            }
+
+            // Ver reliquias
+
+            const reliquia1 = document.querySelector("#reliquia1");
+            const reliquia2 = document.querySelector("#reliquia2");
+            const talentos = document.querySelector("#talentos");
+
+            reliquia1.value = monstruo.relics[0];
+
+            if(monstruo.relics.length == 1){
+                reliquia2.value = "None";
+                talentos.value = "None";
+            }else{
+                if(monstruo.relics.length == 3){
+                    reliquia2.value = monstruo.relics[1];
+                    talentos.value = monstruo.relics[2];
+                }else{
+                    reliquia2.value = monstruo.relics[1];
+                }
+            }
+
+
+            // Ver libros
+
+            for(i = 0; i < Libros.length; i++){
+                Libros[i].checked = false;
+                for(j = 0; j < monstruo.books.length; j++){
+                    if(Libros[i].value == monstruo.books[j]){
+                        Libros[i].checked = true;
+                    }
+                }
             }
 
             // Ver estadisticas
@@ -125,13 +171,22 @@ function BuscarMonstruo(){
 
                 const ss_recuperacion = clon_skills.querySelector(".ss_recuperacion");
                 ss_recuperacion.value = monstruo.skillset[i].cooldown;
+
+                const HabilidadEfectos = clon_skills.querySelector(".EfectosHabilidad");
+                const efectos = clon_skills.querySelector(".Efectos");
+                efectos.remove()
+                for(j = 0; j < monstruo.skillset[i].effects.length; j++){
+                    const clon_efectos = efectos.cloneNode(true);
+                    HabilidadEfectos.appendChild(clon_efectos);
+                    clon_efectos.value = monstruo.skillset[i].effects[j];
+                }
             }
 
             const ult_nombre = HabilidadUlt.querySelector("#ult_nombre");
             ult_nombre.value = monstruo.ult_ability.name;
 
             const ult_descripcion = HabilidadUlt.querySelector("#ult_descripcion");
-            ult_descripcion.value = monstruo.ult_ability.name;
+            ult_descripcion.value = monstruo.ult_ability.ult_description;
 
             const ult_objetivo = HabilidadUlt.querySelector("#ult_objetivo");
             ult_objetivo.value = monstruo.ult_ability.target;
@@ -214,4 +269,9 @@ function CambiarMonstruo(){
             window.location.reload()
         }
     }));
+}
+
+function AgregarHabilidad(){
+    const clon_skills = PlantillaHabilidad.cloneNode(true);
+    ContenedorHabilidades.appendChild(clon_skills);
 }

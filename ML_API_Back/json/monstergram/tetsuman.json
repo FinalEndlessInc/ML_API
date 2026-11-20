@@ -8,10 +8,10 @@
     "generation": "Metropolitan",
     "description": "With Malairion controlling all of the Nebula in Elektra, how can the superheroes stop him? Well... They have their own secret weapon, and his name is Tetsuman! Built with cutting-edge technology, countless fighting techniques, and a mission to protect the innocent, Tetsuman is set to give the villains a nightmare or two.",
     "books": [
-        "Metropolitan era",
+        "Metropolitan Era",
         "Elektra Patrol",
         "Adventurers",
-        "Good legions",
+        "Good Legions",
         "Mechanical"
     ],
     "sprites": {
@@ -29,103 +29,109 @@
         "Mask",
         "Street Talents"
     ],
-    "stats": {
-        "rank0": {
+    "stats": [
+        {
+            "rank": 0,
             "life": 113401,
             "power": 10263,
             "speed": 7271,
             "stamina": 180,
             "gold": 364
         },
-        "rank1": {
+        {
+            "rank":1,
             "life": 141464,
             "power": 12588,
             "speed": 8172,
             "stamina": 200,
             "gold": 364
         },
-        "rank2": {
+        {
+            "rank": 2,
             "life": 173440,
             "power": 15158,
             "speed": 9126,
             "stamina": 220,
             "gold": 364
         },
-        "rank3": {
+        {
+            "rank": 3,
             "life": 209034,
             "power": 17136,
             "speed": 10122,
             "stamina": 240,
             "gold": 364
         },
-        "rank4": {
+        {
+            "rank": 4,
             "life": 249400,
             "power": 20115,
             "speed": 11145,
             "stamina": 260,
             "gold": 364
         },
-        "rank5": {
+        {
+            "rank":5,
             "life": 318002,
             "power": 24256,
             "speed": 12560,
             "stamina": 280,
             "gold": 364
         }
-    },
+    ],
     "skillset": [
         {
             "name": "Shocking Kata",
             "description": "Deals moderate Thunder damage to one enemy. Applies Shock to one enemy.",
-            "ability-type": "Thunder",
+            "ability_type": "Thunder",
             "target": "single target",
             "effects": [
                 "Shock"
             ],
             "accuracy": 100,
             "damage": 30,
-            "stamina-cost": 30,
+            "stamina_cost": 30,
             "cooldown": 0
         },
         {
             "name": "Shinobi Technique",
             "description": "Deals low Nature damage to all enemies",
-            "ability-type": "Nature",
+            "ability_type": "Nature",
             "target": "all enemies",
             "effects": [],
             "accuracy": 100,
             "damage": 20,
-            "stamina-cost": 30,
+            "stamina_cost": 30,
             "cooldown": 0
         },
         {
             "name": "Karlo Chop",
             "description": "Deals moderate Nature damage to one enemy. Applies Poison to one enemy. Requires cooldown.",
-            "ability-type": "Nature",
+            "ability_type": "Nature",
             "target": "single target",
             "effects": [
                 "Poison"
             ],
             "accuracy": 95,
             "damage": 40,
-            "stamina-cost": 36,
+            "stamina_cost": 36,
             "cooldown": 1
         },
         {
             "name": "Swift Tekki",
             "description": "Deals low Thunder damage to one enemy. Gives 1 extra turn to itself. Requires cooldown.",
-            "ability-type": "Thunder",
+            "ability_type": "Thunder",
             "target": "single target",
             "effects": [],
             "accuracy": 95,
             "damage": 25,
-            "stamina-cost": 36,
+            "stamina_cost": 36,
             "cooldown": 1
         },
         {
             "name": "Shockwave",
             "description": "Deals moderate Natura damage to one enemy. Applies Poison and Bleed to all enemies. Requires cooldown.",
-            "ability-type": "Nature",
+            "ability_type": "Nature",
             "target": "single target",
             "effects": [
                 "Poison",
@@ -133,13 +139,13 @@
             ],
             "accuracy": 95,
             "damage": 30,
-            "stamina-cost": 42,
+            "stamina_cost": 42,
             "cooldown": 2
         },
         {
             "name": "No Weak Spots",
             "description": "Applies Fire Immunity and a random Protection to itself. Gives 1 extra turn to itself. Requires cooldown.",
-            "ability-type": "Nature",
+            "ability_type": "Nature",
             "target": "one ally",
             "effects": [
                 "Fire Immunity",
@@ -147,13 +153,13 @@
             ],
             "accuracy": 100,
             "damage": 0,
-            "stamina-cost": 50,
+            "stamina_cost": 50,
             "cooldown": 3
         },
         {
             "name": "Underdog Fury",
             "description": "Deals moderate Nature damage to all enemies. Applies Shock and Burn to all enemies. Requires cooldown.",
-            "ability-type": "Nature",
+            "ability_type": "Nature",
             "target": "all enemies",
             "effects": [
                 "Shock",
@@ -161,13 +167,13 @@
             ],
             "accuracy": 90,
             "damage": 30,
-            "stamina-cost": 42,
+            "stamina_cost": 42,
             "cooldown": 2
         },
         {
             "name": "Inspired by the Crowd",
             "description": "Applies Damage Boost and Precision to itself. Gives 1 extra turn to itself. Requires cooldown.",
-            "ability-type": "Nature",
+            "ability_type": "Nature",
             "target": "one ally",
             "effects": [
                 "Damage Boost",
@@ -175,13 +181,13 @@
             ],
             "accuracy": 100,
             "damage": 0,
-            "stamina-cost": 50,
+            "stamina_cost": 50,
             "cooldown": 3
         }
     ],
-    "ult-ability": {
+    "ult_ability": {
         "name": "Never Second Best!",
-        "ult-description": "Applies Nanovirus and Bleed to all enemies. Restores all cooldowns on itself. Gives 1 extra turn to itself.",
+        "ult_description": "Applies Nanovirus and Bleed to all enemies. Restores all cooldowns on itself. Gives 1 extra turn to itself.",
         "target": "all enemies",
         "effects": [
             "Nanovirus",

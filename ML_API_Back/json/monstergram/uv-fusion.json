@@ -23,69 +23,76 @@
     "relics": [
         "relic1", "relic2", "talent"
     ],
-    "stats": {
-        "rank0": {
+    "stats": [
+        {
+            "rank": 0,
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
             "gold": 0
         },
-        "rank1": {
+        {
+            "rank": 1,
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
             "gold": 0
         },
-        "rank2": {
+        {
+            "rank": 2,
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
             "gold": 0
         },
-        "rank3": {
+        {
+            "rank": 3,
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
             "gold": 0
         },
-        "rank4": {
+        {
+            "rank": 4,
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
             "gold": 0
         },
-        "rank5":{
+        {
+            "rank": 5,
             "life": 0,
             "power": 0,
             "speed": 0,
             "stamina": 0,
             "gold": 0
         }
-    },
-    "skillset":[
+        
+    ],
+    "skillset": [
         {
             "name": "Skill name",
             "description": "description name",
-            "ability-type": "type",
+            "ability_type": "type",
             "target": "single target",
             "effects": [
                 "effect1","effect2"
             ],
             "accuracy": 0,
             "damage": 0,
-            "stamina-cost": 0,
+            "stamina_cost": 0,
             "cooldown": 0
 
         }
     ],
-    "ult-ability": {
+    "ult_ability": {
         "name": "ult name",
-        "ult-description": "ult description",
+        "ult_description": "ult description",
         "target": "all enemies",
         "effects": [
             "effect1", "effect2", "effect3"
