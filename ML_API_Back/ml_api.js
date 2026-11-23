@@ -74,6 +74,67 @@ const server = http.createServer((request, response) => {
 
         // POST -------------------------------------------------------------------------------------------------------------
         case "POST":
+            var informacion = "";
+            request.on("data", info => {
+                informacion += info;
+            });
+            request.on("end", () => {
+                switch(request.url){
+                    case "/AgregarMonstruo":
+                        const monstruo_nuevo = JSON.parse(informacion);
+                        
+
+                        const objeto_sprites = {
+                            egg: monstruo_nuevo.egg,
+                            baby: monstruo_nuevo.baby,
+                            adult: monstruo_nuevo.adult,
+                        }
+
+                        if(monstruo_nuevo.teen == undefined || monstruo_nuevo.teen == "undefined"){
+                            console.log("Monster has no teen phase");
+                        }else{
+                            objeto_sprites.teen = monstruo_nuevo.teen;
+                        }
+
+                        const monstruo_ha_agregar = {
+                            name: monstruo_nuevo.name,
+                            number: monstruo_nuevo.number,
+                            elements: monstruo_nuevo.elements,
+                            rarity: monstruo_nuevo.rarity,
+                            generation: monstruo_nuevo.generation,
+                            description: monstruo_nuevo.description,
+                            books: monstruo_nuevo.books,
+                            sprites: objeto_sprites,
+                            traits: monstruo_nuevo.traits,
+                            relics: monstruo_nuevo.relics,
+                            stats: monstruo_nuevo.stats,
+                            skillset: monstruo_nuevo.skillset,
+                            ult_ability: monstruo_nuevo.ult_ability
+                        }
+                        console.log(monstruo_ha_agregar);
+
+                        fs.writeFile("./json/monstergram/" + monstruo_ha_agregar.name.toLowerCase().replace(" ", "-") + ".json", JSON.stringify(monstruo_ha_agregar), err => {
+                        if(err){
+                            console.log(err);
+                            response.statusCode = 400;
+                            response.setHeader("Content-Type", "application/json");
+                            response.end(JSON.stringify({
+                                message: "Something went wrong"
+                            }));
+                            
+                        }
+                        else{
+                            response.statusCode = 201;
+                            response.setHeader("Content-Type", "application/json");
+                            response.end(JSON.stringify({
+                                message: "Monster added succesfully"
+                            }));
+                        }
+                    });
+
+                    break;
+                }
+            })
 
         break;
 

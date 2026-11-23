@@ -1,64 +1,44 @@
-const ApartadoAgregar = document.querySelector("#apartado_crear");
-const ApartadoEditar = document.querySelector("#apartado_editar");
-const CamposMonstruo = document.querySelector(".CamposMonstruo");
-
-CamposMonstruo.remove();
-ApartadoEditar.style.display = "none";
-
-function VerAgregar(){
-    ApartadoAgregar.style.display = "block";
-    ApartadoAgregar.appendChild(CamposMonstruo);
-    ApartadoEditar.style.display = "none";
-}
-
-function VerEditar(){
-    ApartadoEditar.style.display = "block";
-    ApartadoAgregar.style.display = "none";
-    
-}
-
 
 // Todo para editar ---------------------------------------------------------------------------------
-const PaginaEditar = document.querySelector("#apartado_editar");
-const CargarBusqueda = PaginaEditar.querySelector("#Cargar_busqueda");
-CargarBusqueda.appendChild(CamposMonstruo);
-const PlantillaStats = PaginaEditar.querySelector(".PlantillaStats");
-const ContenedorStats = PaginaEditar.querySelector("#ContenedorStadisticas");
-const ContenedorHabilidades = PaginaEditar.querySelector("#ContenedorHabilidades");
-const PlantillaHabilidad = PaginaEditar.querySelector(".PlantillaHabilidad");
-const HabilidadUlt = PaginaEditar.querySelector("#habilidad_ult");
-const ContenedorAtributos = PaginaEditar.querySelector("#ContenedorAtributos");
-const Libros = PaginaEditar.getElementsByClassName("libros");
-const Inputs = PaginaEditar.querySelector("input");
+const PaginaAgregar = document.querySelector("#apartado_editar");
+const CargarBusqueda = PaginaAgregar.querySelector("#Cargar_busqueda");
+const PlantillaStats = PaginaAgregar.querySelector(".PlantillaStats");
+const ContenedorStats = PaginaAgregar.querySelector("#ContenedorStadisticas");
+const ContenedorHabilidades = PaginaAgregar.querySelector("#ContenedorHabilidades");
+const PlantillaHabilidad = PaginaAgregar.querySelector(".PlantillaHabilidad");
+const HabilidadUlt = PaginaAgregar.querySelector("#habilidad_ult");
+const ContenedorAtributos = PaginaAgregar.querySelector("#ContenedorAtributos");
+const Libros = PaginaAgregar.getElementsByClassName("libros");
+const Inputs = PaginaAgregar.querySelector("input");
 
 
 const direccion = "http://localhost:3001/monstergram/";
 
-const Nombre = PaginaEditar.querySelector(".nombre");
-const ID = PaginaEditar.querySelector(".numero");
-const Descripcion = PaginaEditar.querySelector(".Descripcion");
-const Elementos = PaginaEditar.querySelector(".elementos");
-const Rareza = PaginaEditar.querySelector("#Rareza");
-const Atributos = PaginaEditar.querySelector(".atributos");
-const elemento1 = PaginaEditar.querySelector("#element1");
-const elemento2 = PaginaEditar.querySelector("#element2");
-const reliquia1 = PaginaEditar.querySelector("#reliquia1");
-const reliquia2 = PaginaEditar.querySelector("#reliquia2");
-const talentos = PaginaEditar.querySelector("#talentos");
-const generacion = PaginaEditar.querySelector("#Generacion");
+const Nombre = PaginaAgregar.querySelector(".nombre");
+const ID = PaginaAgregar.querySelector(".numero");
+const Descripcion = PaginaAgregar.querySelector(".Descripcion");
+const Elementos = PaginaAgregar.querySelector(".elementos");
+const Rareza = PaginaAgregar.querySelector("#Rareza");
+const Atributos = PaginaAgregar.querySelector(".atributos");
+const elemento1 = PaginaAgregar.querySelector("#element1");
+const elemento2 = PaginaAgregar.querySelector("#element2");
+const reliquia1 = PaginaAgregar.querySelector("#reliquia1");
+const reliquia2 = PaginaAgregar.querySelector("#reliquia2");
+const talentos = PaginaAgregar.querySelector("#talentos");
+const generacion = PaginaAgregar.querySelector("#Generacion");
 var Nombre_antiguo;
 
-const InputImagenPrincipal = PaginaEditar.querySelector("#ImagenPrincipal");
-const PreviewImagenPrincipal = PaginaEditar.querySelector("#PreviewImagenPrincipal");
+const InputImagenPrincipal = PaginaAgregar.querySelector("#ImagenPrincipal");
+const PreviewImagenPrincipal = PaginaAgregar.querySelector("#PreviewImagenPrincipal");
 
-const InputImagenTeen = PaginaEditar.querySelector("#ImagenTeen");
-const PreviewImagenTeen = PaginaEditar.querySelector("#PreviewImagenTeen");
+const InputImagenTeen = PaginaAgregar.querySelector("#ImagenTeen");
+const PreviewImagenTeen = PaginaAgregar.querySelector("#PreviewImagenTeen");
 
-const InputImagenBebe = PaginaEditar.querySelector("#ImagenBebe");
-const PreviewImagenBebe = PaginaEditar.querySelector("#PreviewImagenBebe");
+const InputImagenBebe = PaginaAgregar.querySelector("#ImagenBebe");
+const PreviewImagenBebe = PaginaAgregar.querySelector("#PreviewImagenBebe");
 
-const InputImagenHuevo = PaginaEditar.querySelector("#ImagenHuevo");
-const PreviewImagenHuevo = PaginaEditar.querySelector("#PreviewImagenHuevo");
+const InputImagenHuevo = PaginaAgregar.querySelector("#ImagenHuevo");
+const PreviewImagenHuevo = PaginaAgregar.querySelector("#PreviewImagenHuevo");
 
 
 
@@ -392,4 +372,16 @@ BotonCambiarMonstruo.addEventListener("click", function(){
 function AgregarHabilidad(){
     const clon_skills = PlantillaHabilidad.cloneNode(true);
     ContenedorHabilidades.appendChild(clon_skills);
+}
+
+const inputs = document.querySelectorAll("input");
+const selects = document.querySelectorAll("select");
+function limpiarCampos(){
+    for(i = 0; i < inputs.length; i++){
+        inputs[i].value = null;
+    }
+    for(i = 0; i < selects.length; i++){
+        selects[i].value = null;
+    }
+
 }
