@@ -123,6 +123,7 @@ const server = http.createServer((request, response) => {
                     monstruo_ha_editar.number = objeto_monstruo_editar.number;
                     monstruo_ha_editar.elements = objeto_monstruo_editar.elements;
                     monstruo_ha_editar.rarity = objeto_monstruo_editar.rarity;
+                    monstruo_ha_editar.generation = objeto_monstruo_editar.generation;
                     monstruo_ha_editar.description = objeto_monstruo_editar.description;
                     monstruo_ha_editar.books = objeto_monstruo_editar.books;
 

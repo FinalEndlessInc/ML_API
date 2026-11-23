@@ -1,8 +1,13 @@
 const ApartadoAgregar = document.querySelector("#apartado_crear");
 const ApartadoEditar = document.querySelector("#apartado_editar");
+const CamposMonstruo = document.querySelector(".CamposMonstruo");
+
+CamposMonstruo.remove();
+ApartadoEditar.style.display = "none";
 
 function VerAgregar(){
     ApartadoAgregar.style.display = "block";
+    ApartadoAgregar.appendChild(CamposMonstruo);
     ApartadoEditar.style.display = "none";
 }
 
@@ -16,6 +21,7 @@ function VerEditar(){
 // Todo para editar ---------------------------------------------------------------------------------
 const PaginaEditar = document.querySelector("#apartado_editar");
 const CargarBusqueda = PaginaEditar.querySelector("#Cargar_busqueda");
+CargarBusqueda.appendChild(CamposMonstruo);
 const PlantillaStats = PaginaEditar.querySelector(".PlantillaStats");
 const ContenedorStats = PaginaEditar.querySelector("#ContenedorStadisticas");
 const ContenedorHabilidades = PaginaEditar.querySelector("#ContenedorHabilidades");
@@ -54,14 +60,16 @@ const PreviewImagenBebe = PaginaEditar.querySelector("#PreviewImagenBebe");
 const InputImagenHuevo = PaginaEditar.querySelector("#ImagenHuevo");
 const PreviewImagenHuevo = PaginaEditar.querySelector("#PreviewImagenHuevo");
 
-PlantillaStats.remove();
-PlantillaHabilidad.remove();
-HabilidadUlt.remove();
-Atributos.remove();
+
 
 function BuscarMonstruo(){
     const boton_input = document.querySelector("#input_buscar");
     console.log(boton_input.value);
+
+    PlantillaStats.remove();
+    PlantillaHabilidad.remove();
+    HabilidadUlt.remove();
+    Atributos.remove();
 
 
     if(boton_input.value == ""){
@@ -218,6 +226,41 @@ function BuscarMonstruo(){
 
             ContenedorHabilidades.appendChild(HabilidadUlt);
 
+            InputImagenPrincipal.addEventListener("change", function(){
+                const archivo = InputImagenPrincipal.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(archivo);
+                reader.onload = function(){
+                    PreviewImagenPrincipal.src = reader.result;
+                }
+            });
+
+            InputImagenTeen.addEventListener("change", function(){
+                const archivo = InputImagenTeen.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(archivo);
+                reader.onload = function(){
+                    PreviewImagenTeen.src = reader.result;
+                }
+            });
+
+            InputImagenBebe.addEventListener("change", function(){
+                const archivo = InputImagenBebe.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(archivo);
+                reader.onload = function(){
+                    PreviewImagenBebe.src = reader.result;
+                }
+            });
+
+            InputImagenHuevo.addEventListener("change", function(){
+                const archivo = InputImagenHuevo.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(archivo);
+                reader.onload = function(){
+                    PreviewImagenHuevo.src = reader.result;
+                }
+            });
 
             PreviewImagenPrincipal.src = monstruo.sprites.adult;
             PreviewImagenTeen.src = monstruo.sprites.teen;
@@ -229,43 +272,9 @@ function BuscarMonstruo(){
     });
 }
 
-InputImagenPrincipal.addEventListener("change", function(){
-    const archivo = InputImagenPrincipal.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(archivo);
-    reader.onload = function(){
-        PreviewImagenPrincipal.src = reader.result;
-    }
-});
+const BotonCambiarMonstruo = CargarBusqueda.querySelector(".BotonFinal");
 
-InputImagenTeen.addEventListener("change", function(){
-    const archivo = InputImagenTeen.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(archivo);
-    reader.onload = function(){
-        PreviewImagenTeen.src = reader.result;
-    }
-});
-
-InputImagenBebe.addEventListener("change", function(){
-    const archivo = InputImagenBebe.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(archivo);
-    reader.onload = function(){
-        PreviewImagenBebe.src = reader.result;
-    }
-});
-
-InputImagenHuevo.addEventListener("change", function(){
-    const archivo = InputImagenHuevo.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(archivo);
-    reader.onload = function(){
-        PreviewImagenHuevo.src = reader.result;
-    }
-});
-
-function CambiarMonstruo(){
+BotonCambiarMonstruo.addEventListener("click", function(){
 
     if(Nombre.value == ""){
         alert("No se ha seleccionado ningun monstruo");
@@ -378,7 +387,7 @@ function CambiarMonstruo(){
             window.location.reload()
         }
     }));
-}
+});
 
 function AgregarHabilidad(){
     const clon_skills = PlantillaHabilidad.cloneNode(true);

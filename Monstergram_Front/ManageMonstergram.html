@@ -21,16 +21,8 @@
         </div>
     </nav>
 
-    <button onclick="VerAgregar()">Add +</button>
-    <button onclick="VerEditar()">Edit %</button>
-    <button>Delete -</button>
-    <div id="apartado_crear">Agregar un nuevo monstruo</div>
-    <div id="apartado_editar">
-        <div>Search a monster to edit: </div>
-        <input type="text" id="input_buscar">
-        <button onclick="BuscarMonstruo()">Search</button>
-        <div id="Cargar_busqueda">
-            <div>Name:</div>
+    <div class="CamposMonstruo">
+        <div>Name:</div>
             <input type="text" class="nombre">
 
             <div>ID: </div>
@@ -288,8 +280,20 @@
                 <input type="file" id="ImagenHuevo">
                 <img id="PreviewImagenHuevo"><br>
 
-                <button id="BotonEditar" onclick="CambiarMonstruo()">Actualizar</button><br>
+                <button class="BotonFinal">Agregar</button><br>
             </div>
+    </div>
+
+    <button onclick="VerAgregar()">Add +</button>
+    <button onclick="VerEditar()">Edit %</button>
+    <button>Delete -</button>
+    <div id="apartado_crear">Agregar un nuevo monstruo</div>
+    <div id="apartado_editar">
+        <div>Search a monster to edit: </div>
+        <input type="text" id="input_buscar">
+        <button onclick="BuscarMonstruo()">Search</button>
+        <div id="Cargar_busqueda">
+            
         </div>
 
         

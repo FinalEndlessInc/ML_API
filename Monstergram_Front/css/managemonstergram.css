@@ -13,13 +13,6 @@
     display: none;
 }
 
-#apartado_crear{
-    display: block;
-}
-#apartado_editar{
-    display: none;
-}
-
 #ContenedorStadisticas, #ContenedorHabilidades{
     width: 80%;
     height: 300px;
