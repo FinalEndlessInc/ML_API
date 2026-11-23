@@ -1,13 +1,29 @@
+const ApartadoAgregar = document.querySelector("#apartado_crear");
+const ApartadoEditar = document.querySelector("#apartado_editar");
+
+function VerAgregar(){
+    ApartadoAgregar.style.display = "block";
+    ApartadoEditar.style.display = "none";
+}
+
+function VerEditar(){
+    ApartadoEditar.style.display = "block";
+    ApartadoAgregar.style.display = "none";
+    
+}
+
+
+// Todo para editar ---------------------------------------------------------------------------------
 const PaginaEditar = document.querySelector("#apartado_editar");
-const CargarBusqueda = document.querySelector("#Cargar_busqueda");
-const PlantillaStats = document.querySelector(".PlantillaStats");
-const ContenedorStats = document.querySelector("#ContenedorStadisticas");
-const ContenedorHabilidades = document.querySelector("#ContenedorHabilidades");
-const PlantillaHabilidad = document.querySelector(".PlantillaHabilidad");
-const HabilidadUlt = document.querySelector("#habilidad_ult");
-const ContenedorAtributos = document.querySelector("#ContenedorAtributos");
-const Libros = document.getElementsByClassName("libros");
-const Inputs = document.querySelector("input");
+const CargarBusqueda = PaginaEditar.querySelector("#Cargar_busqueda");
+const PlantillaStats = PaginaEditar.querySelector(".PlantillaStats");
+const ContenedorStats = PaginaEditar.querySelector("#ContenedorStadisticas");
+const ContenedorHabilidades = PaginaEditar.querySelector("#ContenedorHabilidades");
+const PlantillaHabilidad = PaginaEditar.querySelector(".PlantillaHabilidad");
+const HabilidadUlt = PaginaEditar.querySelector("#habilidad_ult");
+const ContenedorAtributos = PaginaEditar.querySelector("#ContenedorAtributos");
+const Libros = PaginaEditar.getElementsByClassName("libros");
+const Inputs = PaginaEditar.querySelector("input");
 
 
 const direccion = "http://localhost:3001/monstergram/";
@@ -18,6 +34,12 @@ const Descripcion = PaginaEditar.querySelector(".Descripcion");
 const Elementos = PaginaEditar.querySelector(".elementos");
 const Rareza = PaginaEditar.querySelector("#Rareza");
 const Atributos = PaginaEditar.querySelector(".atributos");
+const elemento1 = PaginaEditar.querySelector("#element1");
+const elemento2 = PaginaEditar.querySelector("#element2");
+const reliquia1 = PaginaEditar.querySelector("#reliquia1");
+const reliquia2 = PaginaEditar.querySelector("#reliquia2");
+const talentos = PaginaEditar.querySelector("#talentos");
+const generacion = PaginaEditar.querySelector("#Generacion");
 var Nombre_antiguo;
 
 const InputImagenPrincipal = PaginaEditar.querySelector("#ImagenPrincipal");
@@ -64,12 +86,10 @@ function BuscarMonstruo(){
             ID.value = monstruo.number;
             Descripcion.value = monstruo.description;
             Rareza.value = monstruo.rarity;
+            generacion.value = monstruo.generation;
 
 
             // Ver elementos
-
-            const elemento1 = document.querySelector("#element1");
-            const elemento2 = document.querySelector("#element2");
 
             elemento1.value = monstruo.elements[0];
 
@@ -88,10 +108,6 @@ function BuscarMonstruo(){
             }
 
             // Ver reliquias
-
-            const reliquia1 = document.querySelector("#reliquia1");
-            const reliquia2 = document.querySelector("#reliquia2");
-            const talentos = document.querySelector("#talentos");
 
             reliquia1.value = monstruo.relics[0];
 
@@ -191,6 +207,15 @@ function BuscarMonstruo(){
             const ult_objetivo = HabilidadUlt.querySelector("#ult_objetivo");
             ult_objetivo.value = monstruo.ult_ability.target;
 
+            const ult_efectos = HabilidadUlt.querySelector("#ult_efectos");
+            const efectos = ult_efectos.querySelector(".ult_efectos_");
+            efectos.remove();
+            for(j = 0; j < monstruo.ult_ability.effects.length; j++){
+                const clon_efectos = efectos.cloneNode(true);
+                ult_efectos.appendChild(clon_efectos);
+                clon_efectos.value = monstruo.ult_ability.effects[j];
+            }
+
             ContenedorHabilidades.appendChild(HabilidadUlt);
 
 
@@ -247,18 +272,102 @@ function CambiarMonstruo(){
         return;
     }
 
+    const obj_elementos = [elemento1.value];
+    if(elemento2.value != "None"){
+        obj_elementos.push(elemento2.value);
+    }
+
+    const obj_libros = [];
+    for(i = 0; i < Libros.length; i++){
+        if(Libros[i].checked == true){
+            obj_libros.push(Libros[i].value);
+        }
+    }
+
+    const obj_atributos = [];
+    const atributos = ContenedorAtributos.getElementsByClassName("atributos");
+    for(i = 0; i < atributos.length; i++){
+        obj_atributos.push(atributos[i].value);
+    }
+
+    const obj_reliquias = [reliquia1.value];
+    if(reliquia2.value != "None"){obj_reliquias.push(reliquia2.value)}
+    if(talentos.value != "None"){obj_reliquias.push(talentos.value)}
+
+    const obj_stats = [];
+    const stats = ContenedorStats.getElementsByClassName("RangoEstadisticas");
+    for(i = 0; i < stats.length; i++){
+        obj_stats.push({
+            rank: i,
+            life: stats[i].querySelector(".Life").value,
+            power: stats[i].querySelector(".Power").value,
+            speed: stats[i].querySelector(".Speed").value,
+            stamina: stats[i].querySelector(".Stamina").value,
+            gold: stats[i].querySelector(".Gold").value,
+        });
+    }
+    
+    const obj_skills = [];
+    const skillsets = ContenedorHabilidades.getElementsByClassName("PlantillaHabilidad");
+    for(i = 0; i < skillsets.length; i++){
+        const efectos = skillsets[i].getElementsByClassName("Efectos");
+        const arreglo_efectos = [];
+
+        for(j = 0; j < efectos.length; j++){
+            arreglo_efectos.push(efectos[j].value);
+        }
+
+        obj_skills.push({
+            name: skillsets[i].querySelector(".ss_nombre").value,
+            description: skillsets[i].querySelector(".ss_descripcion").value,
+            ability_type: skillsets[i].querySelector(".ss_tipo").value,
+            target: skillsets[i].querySelector(".ss_objetivo").value,
+            effects: arreglo_efectos,
+            accuracy: skillsets[i].querySelector(".ss_precision").value,
+            damage: skillsets[i].querySelector(".ss_danio").value,
+            stamina_cost: skillsets[i].querySelector(".ss_costo").value,
+            cooldown: skillsets[i].querySelector(".ss_recuperacion").value
+        });
+    }
+
+    const ult_efectos = HabilidadUlt.querySelector("#ult_efectos");
+    const efectos = ult_efectos.getElementsByClassName("ult_efectos_");
+    const obj_ult_efectos = [];
+
+    for(i=0; i < efectos.length; i++){
+        obj_ult_efectos.push(efectos[i].value);
+    }
+
+    const obj_ult = {
+        name: HabilidadUlt.querySelector("#ult_nombre").value,
+        ult_description: HabilidadUlt.querySelector("#ult_descripcion").value,
+        target: HabilidadUlt.querySelector("#ult_objetivo").value,
+        effects: obj_ult_efectos
+    }
+
     const objeto_editar_monstruo = {
         old_name: Nombre_antiguo,
         new_name: Nombre.value,
         number: ID.value,
+        elements: obj_elementos,
+        rarity: Rareza.value,
+        generation: generacion.value,
         description: Descripcion.value,
+        books: obj_libros,
         egg: PreviewImagenHuevo.src,
         baby: PreviewImagenBebe.src,
         teen: PreviewImagenTeen.src,
-        adult: PreviewImagenPrincipal.src
+        adult: PreviewImagenPrincipal.src,
+        traits: obj_atributos,
+        relics: obj_reliquias,
+        stats: obj_stats,
+        skillset: obj_skills,
+        ult_ability: obj_ult
     }
     
-    fetch(url_endpoint + "/EditarImagenes", {
+    console.log(objeto_editar_monstruo);
+
+    fetch(url_endpoint + "/EditarMonstruo", {
         method: "PUT",
         body: JSON.stringify(objeto_editar_monstruo)
     }).then(recurso => recurso.json().then(respuesta => {

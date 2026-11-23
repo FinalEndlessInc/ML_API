@@ -86,8 +86,8 @@ const server = http.createServer((request, response) => {
             request.on("end", () => {
                 const objeto_monstruo_editar = JSON.parse(informacion);
                 
-                // Este es para agregar las imagenes - ES DE PRUEBA
-                if(request.url == "/EditarImagenes"){
+                // Cambiar el archivo del monstruo
+                if(request.url == "/EditarMonstruo"){
                     console.log(objeto_monstruo_editar);
                     var monstruo_encontrado = false;
                     var monstruo_ha_editar;
@@ -121,7 +121,11 @@ const server = http.createServer((request, response) => {
                     // Cambiando cada valor
                     monstruo_ha_editar.name = objeto_monstruo_editar.new_name;
                     monstruo_ha_editar.number = objeto_monstruo_editar.number;
+                    monstruo_ha_editar.elements = objeto_monstruo_editar.elements;
+                    monstruo_ha_editar.rarity = objeto_monstruo_editar.rarity;
                     monstruo_ha_editar.description = objeto_monstruo_editar.description;
+                    monstruo_ha_editar.books = objeto_monstruo_editar.books;
+
 
                     monstruo_ha_editar.sprites.egg = objeto_monstruo_editar.egg;
                     monstruo_ha_editar.sprites.baby = objeto_monstruo_editar.baby;
@@ -132,6 +136,12 @@ const server = http.createServer((request, response) => {
                     }else{
                         monstruo_ha_editar.teen = objeto_monstruo_editar.teen;
                     }
+
+                    monstruo_ha_editar.traits = objeto_monstruo_editar.traits;
+                    monstruo_ha_editar.relics = objeto_monstruo_editar.relics;
+                    monstruo_ha_editar.stats = objeto_monstruo_editar.stats;
+                    monstruo_ha_editar.skillset = objeto_monstruo_editar.skillset;
+                    monstruo_ha_editar.ult_ability = objeto_monstruo_editar.ult_ability; 
 
                     console.log(monstruo_ha_editar);
                     fs.writeFile("./json/monstergram/" + monstruo_ha_editar.name.toLowerCase().replace(" ", "-") + ".json", JSON.stringify(monstruo_ha_editar), err => {
@@ -153,6 +163,7 @@ const server = http.createServer((request, response) => {
                         }
                     });
                 }
+
             });
 
             

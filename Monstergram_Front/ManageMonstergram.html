@@ -21,7 +21,11 @@
         </div>
     </nav>
 
-    <div id="apartado_editar" style="display:block">
+    <button onclick="VerAgregar()">Add +</button>
+    <button onclick="VerEditar()">Edit %</button>
+    <button>Delete -</button>
+    <div id="apartado_crear">Agregar un nuevo monstruo</div>
+    <div id="apartado_editar">
         <div>Search a monster to edit: </div>
         <input type="text" id="input_buscar">
         <button onclick="BuscarMonstruo()">Search</button>
@@ -77,6 +81,33 @@
                 <option value="Legendary">Legendary</option>
                 <option value="Mythic">Mythic</option>
                 <option value="Arquitect">Arquitect</option>
+            </select>
+
+            <label for="generacion">Generation: </label>
+            <select name="generacion" id="Generacion">
+                <option value="None">None</option>
+                <option value="Dawnbreak">Dawnbreak</option>
+                <option value="Liberation">Liberation</option>
+                <option value="Misery">Misery</option>
+                <option value="Conspiracy">Conspiracy</option>
+                <option value="Feral">Feral</option>
+                <option value="Historia">Historia</option>
+                <option value="Multiverse">Multiverse</option>
+                <option value="Alpine">Alpine</option>
+                <option value="Abyssal">Abyssal</option>
+                <option value="Galactic">Galactic</option>
+                <option value="Blossom">Blossom</option>
+                <option value="Doomsday">Doomsday</option>
+                <option value="Metropolitan">Metropolitan</option>
+                <option value="Corrupted">Corrupted</option>
+                <option value="Cosmic">Cosmic</option>
+                <option value="Original">Original</option>
+                <option value="Forsaken">Forsaken</option>
+                <option value="Elite">Elite</option>
+                <option value="Nemesis">Nemesis</option>
+                <option value="Warmaster">Warmaster</option>
+                <option value="VIP">VIP</option>
+                <option value="Team Wars"></option>
             </select>
 
             <div id="ContenedorReliquias">
@@ -231,7 +262,10 @@
                     <input type="text" id="ult_nombre"><br>
                     <textarea id="ult_descripcion" rows="4" cols="50"></textarea>
                     <input type="text" id="ult_objetivo">
-                    <!--input type="text" id="ult_efectos"-->
+                    <div id="ult_efectos">
+                        <input type="text" class="ult_efectos_">
+                    </div>
+                    
                 </div>
             </div>
 
@@ -254,7 +288,7 @@
                 <input type="file" id="ImagenHuevo">
                 <img id="PreviewImagenHuevo"><br>
 
-                <!--button id="BotonEditar" onclick="CambiarMonstruo()">Actualizar</button--><br>
+                <button id="BotonEditar" onclick="CambiarMonstruo()">Actualizar</button><br>
             </div>
         </div>
 
