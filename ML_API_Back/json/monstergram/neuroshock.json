@@ -1,0 +1,84 @@
+{
+    "name": "Neuroshock",
+    "number": "1387",
+    "elements": [
+        "Fire",
+        "Dark"
+    ],
+    "rarity": "Mythic",
+    "generation": "Conspiracy",
+    "description": "Dilligent, effective, quiet; these are all traits that Neuroshock's employers value in him. He arrives, requests to be paid in advance, and, once the money's in his hands, gets to the hunting job without asking any questions. When his mission is completed, Neuroshock leaves, leaving a faint smell of burnt gasoline behind him. That's it.",
+    "books": [
+        "Conspiracy Era",
+        "Mechanical",
+        "Villains",
+        "League of Hunters"
+    ],
+    "sprites": {},
+    "traits": [
+        "Dodge Area",
+        "Hardened",
+        "SC: Toxins"
+    ],
+    "relics": [
+        "Mask",
+        "Trap"
+    ],
+    "stats": [
+        {
+            "rank": 0,
+            "life": "",
+            "power": "",
+            "speed": "",
+            "stamina": "",
+            "gold": ""
+        },
+        {
+            "rank": 1,
+            "life": "",
+            "power": "",
+            "speed": "",
+            "stamina": "",
+            "gold": ""
+        },
+        {
+            "rank": 2,
+            "life": "",
+            "power": "",
+            "speed": "",
+            "stamina": "",
+            "gold": ""
+        },
+        {
+            "rank": 3,
+            "life": "",
+            "power": "",
+            "speed": "",
+            "stamina": "",
+            "gold": ""
+        },
+        {
+            "rank": 4,
+            "life": "",
+            "power": "",
+            "speed": "",
+            "stamina": "",
+            "gold": ""
+        },
+        {
+            "rank": 5,
+            "life": "",
+            "power": "",
+            "speed": "",
+            "stamina": "",
+            "gold": ""
+        }
+    ],
+    "skillset": [],
+    "ult_ability": {
+        "name": "",
+        "ult_description": "",
+        "target": "",
+        "effects": []
+    }
+}

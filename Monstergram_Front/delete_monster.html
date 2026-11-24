@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Monster || ML API</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/managemonstergram.css">
+</head>
+<body>
+
+    <nav>
+        <div id="LogoPagina">
+            <img src="img/ml_api.png" alt="Logo">
+        </div>
+        <div id="EnlacesSuperior">
+            <a href="index.html" class="enlaces_encabezado">Home</a>
+            <a href="" class="enlaces_encabezado">Monstergram</a>
+            <a href="" class="enlaces_encabezado">Documentation</a>
+            <a href="ManageMonstergram.html" id="EditarMonstruo">+</a>
+        </div>
+    </nav>
+
+    <div id="apartado_editar">
+        <div>Search a monster to edit: </div>
+        <input type="text" id="input_buscar">
+        <button onclick="BuscarMonstruo()">Search</button><br><br>
+        <div id="Cargar_busqueda">
+            <div class="CamposMonstruo">
+                <div class="OrganizadorIZQ">
+                    <h4>Name:</h4>
+                    <input type="text" class="nombre"><br><br>
+
+                    <h4>ID: </h4>
+                    <input type="number" class="numero"><br><br>
+
+                    
+                    <label for="elementos">Elements:</label>
+                    <select id="element1">
+                        <option value="Fire">Fire</option>
+                        <option value="Nature">Nature</option>
+                        <option value="Earth">Earth</option>
+                        <option value="Thunder">Thunder</option>
+                        <option value="Water">Water</option>
+                        <option value="Dark">Dark</option>
+                        <option value="Magic">Magic</option>
+                        <option value="Light">Light</option>
+                        <option value="Special">Special</option>
+                        <option value="Metal">Metal</option>
+                    </select>
+
+                    <select id="element2">
+                        <option value="None">None</option>
+                        <option value="Fire">Fire</option>
+                        <option value="Nature">Nature</option>
+                        <option value="Earth">Earth</option>
+                        <option value="Thunder">Thunder</option>
+                        <option value="Water">Water</option>
+                        <option value="Dark">Dark</option>
+                        <option value="Magic">Magic</option>
+                        <option value="Light">Light</option>
+                        <option value="Special">Special</option>
+                        <option value="Metal">Metal</option>
+                    </select><br><br>
+
+                    <div> Description:</div>
+                    <textarea class="Descripcion" rows="6" cols="40"></textarea><br><br>
+
+                    <div>Traits</div>
+                    <div id="ContenedorAtributos">
+                        <input type="text" class="atributos"><button class="quitar_atributo">X</button><br>
+                    </div><br>
+                    <button onclick="AgregarAtributo()">Add Trait +</button><br><br>
+
+                    <div id="ContenedorReliquias">
+                        <div id="PlantillaReliquia">
+                            <label for="reliquias" class="Reliquia">Relics:</label>
+                            <select name="reliquias" id="reliquia1">
+                                <option value="Sword">Sword</option>
+                                <option value="Mask">Mask</option>
+                                <option value="Essence">Essence</option>
+                                <option value="Amulet">Amulet</option>
+                                <option value="Trap">Trap</option>
+                                <option value="Staff">Staff</option>
+                                <option value="Armor">Armor</option>
+                                <option value="Shield">Shield</option>
+                                <option value="Banner">Banner</option>
+                            </select>
+                            
+                            <select name="reliquias" id="reliquia2">
+                                <option value="None">None</option>
+                                <option value="Sword">Sword</option>
+                                <option value="Mask">Mask</option>
+                                <option value="Essence">Essence</option>
+                                <option value="Amulet">Amulet</option>
+                                <option value="Trap">Trap</option>
+                                <option value="Staff">Staff</option>
+                                <option value="Armor">Armor</option>
+                                <option value="Shield">Shield</option>
+                                <option value="Banner">Banner</option>
+                            </select>
+
+                            <select name="talentos" id="talentos">
+                                <option value="None">None</option>
+                                <option value="Obscure Talents">Obscure Talents</option>
+                                <option value="Street Talents">Street Talents</option>
+                                <option value="Doomed Talents">Doomed Talents</option>
+                                <option value="Blossom Talents">Blossom Talents</option>
+                                <option value="Galactic Talents">Galactic Talents</option>
+
+                            </select>
+                        </div>
+                    </div><br><br>
+
+                    <label for="rareza">Rarity: </label>
+                    <select name="rareza" id="Rareza">
+                        <option value="Common">Common</option>
+                        <option value="Uncommon">Uncommon</option>
+                        <option value="Rare">Rare</option>
+                        <option value="Epic">Epic</option>
+                        <option value="Legendary">Legendary</option>
+                        <option value="Mythic">Mythic</option>
+                        <option value="Arquitect">Arquitect</option>
+                    </select><br><br>
+
+                    <label for="generacion">Generation: </label><br><br>
+                    <select name="generacion" id="Generacion">
+                        <option value="None">None</option>
+                        <option value="Dawnbreak">Dawnbreak</option>
+                        <option value="Liberation">Liberation</option>
+                        <option value="Misery">Misery</option>
+                        <option value="Conspiracy">Conspiracy</option>
+                        <option value="Feral">Feral</option>
+                        <option value="Historia">Historia</option>
+                        <option value="Multiverse">Multiverse</option>
+                        <option value="Alpine">Alpine</option>
+                        <option value="Abyssal">Abyssal</option>
+                        <option value="Galactic">Galactic</option>
+                        <option value="Blossom">Blossom</option>
+                        <option value="Doomsday">Doomsday</option>
+                        <option value="Metropolitan">Metropolitan</option>
+                        <option value="Corrupted">Corrupted</option>
+                        <option value="Cosmic">Cosmic</option>
+                        <option value="Original">Original</option>
+                        <option value="Forsaken">Forsaken</option>
+                        <option value="Elite">Elite</option>
+                        <option value="Nemesis">Nemesis</option>
+                        <option value="Warmaster">Warmaster</option>
+                        <option value="VIP">VIP</option>
+                        <option value="Team Wars"></option>
+                    </select><br><br>
+
+                    <div id="ContenedorLibros">
+                        <h3>Books:</h3><br>
+                        <h4>Generation:</h4>
+                        <div class="BookOrganizer">
+                            <input type="checkbox" class="libros" value="Original Era">Original Era<br>
+                            <input type="checkbox" class="libros" value="Cosmic Era">Cosmic Era<br>
+                            <input type="checkbox" class="libros" value="Corrupted Era">Corrupted Era<br>
+                            <input type="checkbox" class="libros" value="Metropolitan Era">Metropolitan Era<br>
+                            <input type="checkbox" class="libros" value="Doomsday Era">Doomsday Era<br>
+                            <input type="checkbox" class="libros" value="Blossom Era">Blossom Era<br>
+                            <input type="checkbox" class="libros" value="Galactic Era">Galactic Era<br>
+                            <input type="checkbox" class="libros" value="Abyssal Era">Abyssal Era<br>
+                            <input type="checkbox" class="libros" value="Alpine Era">Alpine Era<br>
+                            <input type="checkbox" class="libros" value="Multiverse Era">Multiverse Era<br>
+                            <input type="checkbox" class="libros" value="Historia Era">Historia Era<br>
+                            <input type="checkbox" class="libros" value="Feral Era">Feral Era<br>
+                            <input type="checkbox" class="libros" value="Conspiracy Era">Conspiracy Era<br>
+                            <input type="checkbox" class="libros" value="Misery Era">Misery Era<br>
+                            <input type="checkbox" class="libros" value="Liberation Era">Liberation Era<br>
+                            <input type="checkbox" class="libros" value="Dawnbreak Era">Dawnbreak Era<br>
+                        </div>
+                        <br><br>
+                        <h4>Books:</h4>
+                        <div class="BookOrganizer">
+                            <input type="checkbox" class="libros" value="Begginer">Begginer<br>
+                            <input type="checkbox" class="libros" value="Dragon">Dragon<br>
+                            <input type="checkbox" class="libros" value="Spirits">Spirits<br>
+                            <input type="checkbox" class="libros" value="Winged">Winged<br>
+                            <input type="checkbox" class="libros" value="Sea">Sea<br>
+                            <input type="checkbox" class="libros" value="Underworld">Underworld<br>
+                            <input type="checkbox" class="libros" value="Mechanical">Mechanical<br>
+                            <input type="checkbox" class="libros" value="Female">Female<br>
+                            <input type="checkbox" class="libros" value="Undead">Undead<br>
+                            <input type="checkbox" class="libros" value="Winter">Winter<br>
+                            <input type="checkbox" class="libros" value="Good Legions">Good Legions<br>
+                            <input type="checkbox" class="libros" value="Evil Legions">Evil Legions<br>
+                            <input type="checkbox" class="libros" value="Superheroes">Superheroes<br>
+                            <input type="checkbox" class="libros" value="Families">Families<br>
+                            <input type="checkbox" class="libros" value="Team Wars">Team Wars<br>
+                            <input type="checkbox" class="libros" value="Exclusive">Exclusive<br>
+                            <input type="checkbox" class="libros" value="Adventurers">Adventurers<br>
+                            <input type="checkbox" class="libros" value="Villains">Villains<br>
+                            <input type="checkbox" class="libros" value="Elite">Elite<br>
+                            <input type="checkbox" class="libros" value="Race">Race<br>
+                            <input type="checkbox" class="libros" value="Quest">Quest<br>
+                            <input type="checkbox" class="libros" value="Elementals">Elementals<br>
+                            <input type="checkbox" class="libros" value="Zoomorph">Zoomorph<br>
+                            <input type="checkbox" class="libros" value="Wielders">Wielders<br>
+                        </div>
+                        
+                        <br><br>
+                        <h4>Faction:</h4>
+                        <div class="BookOrganizer">
+                            <input type="checkbox" class="libros" value="Souls Lair">Souls Lair<br>
+                            <input type="checkbox" class="libros" value="Honor Dojo">Honor Dojo<br>
+                            <input type="checkbox" class="libros" value="Adventurer's Guild">Adventurer's Guild<br>
+                            <input type="checkbox" class="libros" value="Wicked Gaia">Wicked Gaia<br>
+                            <input type="checkbox" class="libros" value="Righteous Court">Righteous Court<br>
+                            <input type="checkbox" class="libros" value="Fury Dojo">Fury Dojo<br>
+                            <input type="checkbox" class="libros" value="Revenge Squadron">Revenge Squadron<br>
+                            <input type="checkbox" class="libros" value="The Syndicate">The Syndicate<br>
+                            <input type="checkbox" class="libros" value="Elektra Patrol">Elektra Patrol<br>
+                            <input type="checkbox" class="libros" value="Wastelands">Wastelands<br>
+                            <input type="checkbox" class="libros" value="Barbarians">Barbarians<br>
+                            <input type="checkbox" class="libros" value="Underworld Dwellers">Underworld Dwellers<br>
+                            <input type="checkbox" class="libros" value="Celestial Paradise">Celestial Paradise<br>
+                            <input type="checkbox" class="libros" value="Magic Council">Magic Council<br>
+                            <input type="checkbox" class="libros" value="Pure Gaia">Pure Gaia<br>
+                            <input type="checkbox" class="libros" value="Rocky Peaks">Rocky Peaks<br>
+                            <input type="checkbox" class="libros" value="Fiery Forces">Fiery Forces<br>
+                            <input type="checkbox" class="libros" value="Dark Blades">Dark Blades<br>
+                            <input type="checkbox" class="libros" value="Star Sailors">Star Sailors<br>
+                            <input type="checkbox" class="libros" value="Space Defenders">Space Defenders<br>
+                            <input type="checkbox" class="libros" value="Cosmo Civilizations">Cosmo Civilizations<br>
+                            <input type="checkbox" class="libros" value="Abominations">Abominations<br>
+                            <input type="checkbox" class="libros" value="Citizens">Citizens<br>
+                            <input type="checkbox" class="libros" value="New Wave">New Wave<br>
+                            <input type="checkbox" class="libros" value="Sea Old Guard">Sea Old Guard<br>
+                            <input type="checkbox" class="libros" value="Free Reigns">Free Reigns<br>
+                            <input type="checkbox" class="libros" value="Festivities">Festivities<br>
+                            <input type="checkbox" class="libros" value="Summitfolk">Summitfolk<br>
+                            <input type="checkbox" class="libros" value="Monstelvania">Monstelvania<br>
+                            <input type="checkbox" class="libros" value="Pirates of Petra">Pirates of Petra<br>
+                            <input type="checkbox" class="libros" value="League of Hunters">League of Hunters<br>
+                            <input type="checkbox" class="libros" value="Saurians">Saurians<br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="OrganizadorCentro">
+                    <h3>Stats</h3>
+                    <div id="ContenedorStadisticas">
+                        <div class="PlantillaStats">
+                            <div class="RangoEstadisticas">
+                                <div class="Rango">Rank 0</div>
+                                Life:
+                                <br><input type="number" class="Life"><br>
+                                Power:
+                                <br><input type="number" class="Power"><br>
+                                Speed:
+                                <br><input type="number" class="Speed"><br>
+                                Stamina:
+                                <br><input type="number" class="Stamina"><br>
+                                Gold:
+                                <br><input type="number" class="Gold"><br>
+                                <br><hr>
+                            </div>
+                        </div>
+
+                    </div><br>
+                    <hr><br>
+                    <h3>Skillsets</h3>
+                    <div id="ContenedorHabilidades">
+                        <div class="PlantillaHabilidad">
+                            <input type="text" name="" class="ss_nombre" placeholder="Skill name"><br><br>
+                            <textarea class="ss_descripcion" rows="6" cols="40" placeholder="Skill description"></textarea><br><br>
+                            <input type="text" name="" class="ss_tipo" placeholder="Skill Type"><br><br>
+                            <input type="text" name="" class="ss_objetivo" placeholder="Skill Targets"><br><br>
+                            <div class="EfectosHabilidad">
+                                <input type="text" name="" class="Efectos" placeholder="Skill effects"><button class="Btn_QuitarEfecto_ss">X</button>
+                            </div>
+                            <button class="Btn_AgregarEfecto_ss">Add Effect</button><br><br>
+                            <input type="number" name="" class="ss_precision" placeholder="Accuracy">
+                            <input type="number" name="" class="ss_danio" placeholder="Damage">
+                            <input type="number" name="" class="ss_costo" placeholder="Stamina cost">
+                            <input type="number" name="" class="ss_recuperacion" placeholder="Cooldown">
+                            <br><br>
+                            <button class="Btn_QuitarHabilidad">Remove Skill</button><br><br>
+                            <hr>
+                        </div>
+                        
+
+                    </div>
+                    <button onclick="AgregarHabilidad()"> + Add Skill</button><br>
+
+                    <br><hr><br>
+
+                    <div id="habilidad_ult">
+                            <h3>Ultimate</h3>
+                            <input type="text" id="ult_nombre" placeholder="Ult name"><br><br>
+                            <textarea id="ult_descripcion" rows="4" cols="50" placeholder="Ult description"></textarea><br><br>
+                            <input type="text" id="ult_objetivo" placeholder="Target"><br><br><hr><br>
+                            <div id="ult_efectos">
+                                <input type="text" class="ult_efectos_" placeholder="Effect"><button class="Btn_QuitarEfecto_ult">X</button>
+                            </div>
+                            <button onclick="AgregarEfectosUlt()">Add Ult Effect</button>        
+                    </div>
+                </div>
+
+                <div class="OrganizadorDER">
+                    <div class="SubirImagenesMonstruos">
+                        <h3>Adult/Main Image</h3>
+                        <input type="file" id="ImagenPrincipal">
+                        <img id="PreviewImagenPrincipal"><br>
+
+                        <h3>Teen Image (Optional)</h3>
+                        <input type="file" id="ImagenTeen">
+                        <img id="PreviewImagenTeen"><br>
+
+                        <h3>Baby Image</h3>
+                        <input type="file" id="ImagenBebe">
+                        <img id="PreviewImagenBebe"><br>
+
+                        <h3>Egg Image</h3>
+                        <input type="file" id="ImagenHuevo">
+                        <img id="PreviewImagenHuevo"><br>
+
+                        <button class="BotonFinal">Agregar</button><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="js/global.js"></script>
+<script src="js/ManageMonstergram.js"></script>
+</html>

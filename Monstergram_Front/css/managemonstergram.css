@@ -17,10 +17,10 @@ input, textarea, select option{
     font-family: Arial, Helvetica, sans-serif;
 }
 #Cargar_busqueda{
-    display: none;
+    display: block;
 }
 
-#Agregar_Monstruo{
+#Agregar_Monstruo, #apartado_editar{
     padding: 15px;
 }
 
@@ -54,6 +54,7 @@ input, textarea, select option{
     border: 1px gray solid;
     border-radius: 15px;
 }
+
 
 .PlantillaStats, .PlantillaHabilidad{
     width: 100%;

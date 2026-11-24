@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manejo monstruo</title>
+    <title>Agregar Monstruo || ML API</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/managemonstergram.css">
 </head>
@@ -65,7 +65,7 @@
 
                     <div>Traits</div>
                     <div id="ContenedorAtributos">
-                        <input type="text" class="atributos">
+                        <input type="text" class="atributos"><button class="quitar_atributo">X</button><br>
                     </div><br>
                     <button onclick="AgregarAtributo()">Add Trait +</button><br><br>
 
@@ -266,9 +266,9 @@
                             <input type="text" name="" class="ss_tipo" placeholder="Skill Type"><br><br>
                             <input type="text" name="" class="ss_objetivo" placeholder="Skill Targets"><br><br>
                             <div class="EfectosHabilidad">
-                                <input type="text" name="" class="Efectos" placeholder="Skill effects">
+                                <input type="text" name="" class="Efectos" placeholder="Skill effects"><button class="Btn_QuitarEfecto_ss">X</button>
                             </div>
-                            <button onclick="AgregarEfectos()">Add Effect</button><br><br>
+                            <button class="Btn_AgregarEfecto_ss">Add Effect</button><br><br>
                             <input type="number" name="" class="ss_precision" placeholder="Accuracy">
                             <input type="number" name="" class="ss_danio" placeholder="Damage">
                             <input type="number" name="" class="ss_costo" placeholder="Stamina cost">
@@ -290,7 +290,7 @@
                             <textarea id="ult_descripcion" rows="4" cols="50" placeholder="Ult description"></textarea><br><br>
                             <input type="text" id="ult_objetivo" placeholder="Target">
                             <div id="ult_efectos">
-                                <input type="text" class="ult_efectos_" placeholder="Effect">
+                                <input type="text" class="ult_efectos_" placeholder="Effect"><button class="Btn_QuitarEfecto_ult">X</button>
                             </div>
                             <button onclick="AgregarEfectosUlt()">Add Ult Effect</button>        
                     </div>

@@ -19,7 +19,10 @@ const ID = PaginaAgregar.querySelector(".numero");
 const Descripcion = PaginaAgregar.querySelector(".Descripcion");
 const Elementos = PaginaAgregar.querySelector(".elementos");
 const Rareza = PaginaAgregar.querySelector("#Rareza");
+
 const Atributos = PaginaAgregar.querySelector(".atributos");
+const Btn_QuitarAtributos = ContenedorAtributos.querySelector(".quitar_atributo");
+
 const elemento1 = PaginaAgregar.querySelector("#element1");
 const elemento2 = PaginaAgregar.querySelector("#element2");
 const reliquia1 = PaginaAgregar.querySelector("#reliquia1");
@@ -40,7 +43,22 @@ const PreviewImagenBebe = PaginaAgregar.querySelector("#PreviewImagenBebe");
 const InputImagenHuevo = PaginaAgregar.querySelector("#ImagenHuevo");
 const PreviewImagenHuevo = PaginaAgregar.querySelector("#PreviewImagenHuevo");
 
+const Cont_EfectosHabilidad = PaginaAgregar.querySelector(".EfectosHabilidad");
+const ss_efectos = Cont_EfectosHabilidad.querySelector(".Efectos");
+const btn_quitarEfectos_ss = Cont_EfectosHabilidad.querySelector(".Btn_QuitarEfecto_ss");
 
+const Cont_EfectosUlt = PaginaAgregar.querySelector("#ult_efectos");
+const ult_efectos = Cont_EfectosUlt.querySelector(".ult_efectos_");
+const btn_quitarEfecto_ult = Cont_EfectosUlt.querySelector(".Btn_QuitarEfecto_ult"); 
+
+Btn_QuitarAtributos.remove();
+ss_efectos.remove();
+ult_efectos.remove();
+btn_quitarEfectos_ss.remove();
+btn_quitarEfecto_ult.remove();
+
+PlantillaStats.remove();
+PlantillaHabilidad.remove();
 
 function BuscarMonstruo(){
     const boton_input = document.querySelector("#input_buscar");
@@ -48,7 +66,6 @@ function BuscarMonstruo(){
 
     PlantillaStats.remove();
     PlantillaHabilidad.remove();
-    HabilidadUlt.remove();
     Atributos.remove();
 
 
@@ -90,9 +107,15 @@ function BuscarMonstruo(){
             // Ver atributos
             for(i = 0; i < monstruo.traits.length; i++){
                 const clon_atributo = Atributos.cloneNode(true);
+                const clon_boton = Btn_QuitarAtributos.cloneNode(true);
                 ContenedorAtributos.appendChild(clon_atributo);
+                ContenedorAtributos.appendChild(clon_boton);
 
                 clon_atributo.value = monstruo.traits[i];
+                clon_boton.addEventListener("click", function(){
+                    clon_atributo.remove();
+                    clon_boton.remove();
+                });
             }
 
             // Ver reliquias
@@ -178,11 +201,18 @@ function BuscarMonstruo(){
 
                 const HabilidadEfectos = clon_skills.querySelector(".EfectosHabilidad");
                 const efectos = clon_skills.querySelector(".Efectos");
-                efectos.remove()
+                
                 for(j = 0; j < monstruo.skillset[i].effects.length; j++){
-                    const clon_efectos = efectos.cloneNode(true);
+                    const clon_efectos = ss_efectos.cloneNode(true);
+                    const clon_boton = btn_quitarEfectos_ss.cloneNode(true);
                     HabilidadEfectos.appendChild(clon_efectos);
                     clon_efectos.value = monstruo.skillset[i].effects[j];
+                    HabilidadEfectos.appendChild(clon_boton);
+
+                    clon_boton.addEventListener("click", function(){
+                        clon_efectos.remove();
+                        clon_boton.remove();
+                    });
                 }
             }
 
@@ -195,16 +225,20 @@ function BuscarMonstruo(){
             const ult_objetivo = HabilidadUlt.querySelector("#ult_objetivo");
             ult_objetivo.value = monstruo.ult_ability.target;
 
-            const ult_efectos = HabilidadUlt.querySelector("#ult_efectos");
-            const efectos = ult_efectos.querySelector(".ult_efectos_");
-            efectos.remove();
-            for(j = 0; j < monstruo.ult_ability.effects.length; j++){
-                const clon_efectos = efectos.cloneNode(true);
-                ult_efectos.appendChild(clon_efectos);
-                clon_efectos.value = monstruo.ult_ability.effects[j];
-            }
+            //const Cont = HabilidadUlt.querySelector("#ult_efectos");
 
-            ContenedorHabilidades.appendChild(HabilidadUlt);
+            for(j = 0; j < monstruo.ult_ability.effects.length; j++){
+                const clon_efectos = ult_efectos.cloneNode(true);
+                const clon_boton = btn_quitarEfecto_ult.cloneNode(true);
+                Cont_EfectosUlt.appendChild(clon_efectos);
+                Cont_EfectosUlt.appendChild(clon_boton);
+                clon_efectos.value = monstruo.ult_ability.effects[j];
+
+                clon_boton.addEventListener("click", function(){
+                    clon_efectos.remove();
+                    clon_boton.remove();
+                });
+            }
 
             InputImagenPrincipal.addEventListener("change", function(){
                 const archivo = InputImagenPrincipal.files[0];
@@ -319,6 +353,23 @@ BotonCambiarMonstruo.addEventListener("click", function(){
         });
     }
 
+    var obj_sprites = {};
+
+    if(PreviewImagenTeen.src == undefined || PreviewImagenTeen.src == "undefined" || PreviewImagenTeen.src == ""){
+        obj_sprites = {
+            egg: PreviewImagenHuevo.src,
+            baby: PreviewImagenBebe.src,
+            adult: PreviewImagenPrincipal.src
+        }
+    }else{
+        obj_sprites = {
+            egg: PreviewImagenHuevo.src,
+            baby: PreviewImagenBebe.src,
+            teen: PreviewImagenTeen.src,
+            adult: PreviewImagenPrincipal.src
+        }
+    }
+
     const ult_efectos = HabilidadUlt.querySelector("#ult_efectos");
     const efectos = ult_efectos.getElementsByClassName("ult_efectos_");
     const obj_ult_efectos = [];
@@ -343,10 +394,7 @@ BotonCambiarMonstruo.addEventListener("click", function(){
         generation: generacion.value,
         description: Descripcion.value,
         books: obj_libros,
-        egg: PreviewImagenHuevo.src,
-        baby: PreviewImagenBebe.src,
-        teen: PreviewImagenTeen.src,
-        adult: PreviewImagenPrincipal.src,
+        sprites: obj_sprites,
         traits: obj_atributos,
         relics: obj_reliquias,
         stats: obj_stats,
@@ -372,7 +420,73 @@ BotonCambiarMonstruo.addEventListener("click", function(){
 function AgregarHabilidad(){
     const clon_skills = PlantillaHabilidad.cloneNode(true);
     ContenedorHabilidades.appendChild(clon_skills);
+    clon_skills.querySelector(".ss_nombre").value = "";
+    clon_skills.querySelector(".ss_descripcion").value = "";
+    clon_skills.querySelector(".ss_objetivo").value = "";  
+    //clon_skills.querySelector(".Efectos").value = "";
+    clon_skills.querySelector(".ss_precision").value = 0;
+    clon_skills.querySelector(".ss_danio").value = 0;
+    clon_skills.querySelector(".ss_costo").value = 0;
+    clon_skills.querySelector(".ss_recuperacion").value = 0;
+
+    const ContenedorEfectos = clon_skills.querySelector(".EfectosHabilidad");
+    const btn_AgregarEfecto_ss = clon_skills.querySelector(".Btn_AgregarEfecto_ss");
+
+    btn_AgregarEfecto_ss.addEventListener("click", function(){
+        const clon_ss_efecto = ss_efectos.cloneNode(true);
+        const clon_ss_quitar_btn = btn_quitarEfectos_ss.cloneNode(true);
+        ContenedorEfectos.appendChild(clon_ss_efecto);
+        ContenedorEfectos.appendChild(clon_ss_quitar_btn);
+        clon_ss_efecto.value = "";
+        clon_ss_quitar_btn.addEventListener("click", function(){
+            clon_ss_efecto.remove();
+            clon_ss_quitar_btn.remove();
+        });
+    });
+
+    const btn_quitar = clon_skills.querySelector(".Btn_QuitarHabilidad");
+    btn_quitar.addEventListener("click", function(){
+        clon_skills.remove();
+    });
 }
+
+function AgregarAtributo(){
+    const ver_atributos = ContenedorAtributos.getElementsByClassName("atributos");
+
+    if(ver_atributos.length == 5){
+        return;
+    }
+
+    const clon_atributo = Atributos.cloneNode(true);
+    const clon_btn_quitar = Btn_QuitarAtributos.cloneNode(true);
+
+    ContenedorAtributos.appendChild(clon_atributo);
+    ContenedorAtributos.appendChild(clon_btn_quitar);
+
+    clon_atributo.value = "";
+
+    clon_btn_quitar.addEventListener("click", function(){
+        clon_atributo.remove();
+        clon_btn_quitar.remove();
+    });
+
+}
+
+function AgregarEfectosUlt(){
+    const clon_efectos_ult = ult_efectos.cloneNode(true);
+    const clon_btn_quitar = btn_quitarEfecto_ult.cloneNode(true);
+
+    Cont_EfectosUlt.appendChild(clon_efectos_ult);
+    Cont_EfectosUlt.appendChild(clon_btn_quitar);
+
+    clon_efectos_ult.value = "";
+    clon_btn_quitar.addEventListener("click", function(){
+        clon_efectos_ult.remove();
+        clon_btn_quitar.remove();
+    });
+}
+
+
 
 const inputs = document.querySelectorAll("input");
 const selects = document.querySelectorAll("select");
