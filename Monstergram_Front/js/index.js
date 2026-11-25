@@ -54,7 +54,7 @@ function AgregarRareza(objeto_ha_cambiar, rareza){
             objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-epic.webp')";
         break;
         case "Legendary":
-            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-legendary.webp')";
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Icono_Legendary.webp')";
         break;
         case "Mythic":
             objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-mythic.webp')";

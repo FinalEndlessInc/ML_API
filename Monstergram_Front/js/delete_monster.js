@@ -14,6 +14,7 @@ function BorrarMonstruo(){
             }
 
             alert(respuesta.message);
+            window.location = "index.html"
         })})
     }
 }

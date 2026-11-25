@@ -60,6 +60,21 @@ const server = http.createServer((request, response) => {
                     response.end(JSON.stringify(arregloMonstruos));
                 break;
 
+                case "/MonstruoRandom":
+                    TraerArchivos();
+
+                    const monstruo = arregloMonstruos[randomInt(0,arregloMonstruos.length)];
+
+                    const monstruo_ha_mandar = {
+                        name: monstruo.name,
+                        number: monstruo.number
+                    }
+
+                    response.statusCode = 200;
+                    response.setHeader("Content-Type", "application/json");
+                    response.end(JSON.stringify(monstruo_ha_mandar));
+                break;
+
                 case "/MonstruosRandom":
                     TraerArchivos();
 
@@ -288,6 +303,7 @@ const server = http.createServer((request, response) => {
                informacion += info 
             });
             request.on("end", () => {
+                TraerArchivos();
                 const objeto_monstruo_borrar = JSON.parse(informacion);
                 console.log(objeto_monstruo_borrar);
                 var monstruo_encontrado = false;
@@ -295,13 +311,13 @@ const server = http.createServer((request, response) => {
                 for(i = 0; i < arregloMonstruos.length; i++){
                     console.log(objeto_monstruo_borrar.name);
                     console.log(arregloMonstruos[i].name);
-                    if(objeto_monstruo_borrar.name == arregloMonstruos[i].name){
+                    if(objeto_monstruo_borrar.name.toLowerCase() == arregloMonstruos[i].name.toLowerCase()){
                         monstruo_encontrado = true;
                         break;
                     }
                 }
 
-                if(monstruoEncontrado != true){
+                if(monstruoEncontrado == false){
                     response.statusCode = 404;
                     response.setHeader("Content-Type", "application/json");
                     response.end(JSON.stringify({
