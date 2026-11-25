@@ -17,7 +17,7 @@ input, textarea, select option{
     font-family: Arial, Helvetica, sans-serif;
 }
 #Cargar_busqueda{
-    display: block;
+    display: none;
 }
 
 #Agregar_Monstruo, #apartado_editar{
@@ -32,6 +32,8 @@ input, textarea, select option{
     color: black;
     border-radius: 15px;
     display: flex;
+    border: solid 5px gray;
+    box-shadow: 0px 0px 7px #102834;
 }
 
 .OrganizadorIZQ, .OrganizadorCentro, .OrganizadorDER{

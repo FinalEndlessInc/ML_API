@@ -17,9 +17,19 @@
             <a href="index.html" class="enlaces_encabezado">Home</a>
             <a href="" class="enlaces_encabezado">Monstergram</a>
             <a href="" class="enlaces_encabezado">Documentation</a>
-            <a href="ManageMonstergram.html" id="EditarMonstruo">+</a>
+            <div id="BotonManejoMonstruo" onclick="DesplegarLista()">
+                Manage
+            </div>
+            <div id="ListaEdicion">
+                <ul>
+                    <a href="add_monster.html"><li id="Btn_AgregarMonstruo">Add Monster +</li></a>
+                    <a href="ManageMonstergram.html"><li id="Btn_EditarMonstruo">Edit Monster %</li></a>
+                    <a href="delete_monster.html"><li id="Btn_BorrarMonstruo">Delete Monster X</li></a>
+                </ul>
+            </div>
         </div>
     </nav>
+
 
         <div id="Agregar_Monstruo">
             <h1>Add a new monster</h1><br>

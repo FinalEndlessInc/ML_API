@@ -1,5 +1,6 @@
 const http = require("node:http");
 const fs = require("node:fs");
+const { randomInt } = require("node:crypto");
 
 const puerto = 3001;
 const direccion = "http://localhost:" + puerto
@@ -48,7 +49,54 @@ const server = http.createServer((request, response) => {
 
                 response.end("<h1>Si jaló, tú</h1>" + lista_html);
             
-            }else{
+            }
+            if(request.url == "/MonstruosRandom"){
+                TraerArchivos();
+
+                var primer_random = randomInt(0, arregloMonstruos.length);
+                var monstruos_ha_mandar = [{
+                    name: arregloMonstruos[primer_random].name,
+                    number: arregloMonstruos[primer_random].number,
+                    sprite: arregloMonstruos[primer_random].sprites.adult,
+                    rarity: arregloMonstruos[primer_random].rarity,
+                    elements: arregloMonstruos[primer_random].elements
+                }];
+
+
+                
+                while(monstruos_ha_mandar.length != 6){
+                    const monstruo_random = arregloMonstruos[randomInt(0,arregloMonstruos.length)];
+                    var monstruo_repetido = false;
+
+                    // Verificador que no se repitan
+                    for(j = 0; j < monstruos_ha_mandar.length; j++){
+                        //console.log(monstruo_random.name + " /" + monstruos_ha_mandar[j].name);
+                        if(monstruo_random.name == monstruos_ha_mandar[j].name){
+                            monstruo_repetido = true;
+                            //console.log("Monstruo Repetido - Saliendo...");
+                            break;
+                        }
+                    }
+                    if(monstruo_repetido != true){
+                        //console.log("Monstruo no es repetido, agregando...");
+
+                        monstruos_ha_mandar.push({
+                                name: monstruo_random.name,
+                                number: monstruo_random.number,
+                                sprite: monstruo_random.sprites.adult,
+                                rarity: monstruo_random.rarity,
+                                elements: monstruo_random.elements
+                        });
+                    }
+                }
+                /*for(i =0; i < monstruos_ha_mandar.length; i++){
+                    console.log(monstruos_ha_mandar[i].name);
+                }*/
+                response.statusCode = 200;
+                response.setHeader("Content-Type", "application/json");
+                response.end(JSON.stringify(monstruos_ha_mandar));                        
+            }
+            else{
                 var monstruoEncontrado = false;
                 for(i=0; i < arregloMonstruos.length; i++){
                     const monstruo_actual = arregloMonstruos[i];
