@@ -26,6 +26,11 @@
     transform: scale(110%);
 }
 
+.TarjetaMonstruo:hover{
+    cursor: pointer;
+    filter: brightness(120%);
+}
+
 
 .NombreTarjetaMonstruo{
     top: 0;
@@ -53,7 +58,7 @@
     border-radius: 0px 0px 15px 15px;
 }
 
-.ElementosMonstruo{
+.ElementosMonstruo, .RarezaMonstruo{
     height: 30px;
     width: 30px;
     margin-left: 1px;

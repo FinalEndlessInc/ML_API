@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Monster || ML API</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/monstergram.css">
+    <link rel="shortcut icon" href="img/ML_api.ico" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div id="LogoPagina">
+            <img src="img/ml_api.png" alt="Logo">
+        </div>
+        <div id="EnlacesSuperior">
+            <a href="index.html" class="enlaces_encabezado">Home</a>
+            <a href="monstergram.html" class="enlaces_encabezado">Monstergram</a>
+            <a href="" class="enlaces_encabezado">Documentation</a>
+            <div id="BotonManejoMonstruo" onclick="DesplegarLista()">
+                Manage
+            </div>
+            <div id="ListaEdicion">
+                <ul>
+                    <a href="add_monster.html"><li id="Btn_AgregarMonstruo">Add Monster +</li></a>
+                    <a href="ManageMonstergram.html"><li id="Btn_EditarMonstruo">Edit Monster %</li></a>
+                    <a href="delete_monster.html"><li id="Btn_BorrarMonstruo">Delete Monster X</li></a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="ApartadoBuscador">
+        <input type="text" id="InputBuscarMonstruo">
+        <div id="BotonBuscar"></div>
+    </div>
+
+    <div id="ExplorarMonstruos">
+        <div id="ConjuntoMonstruos">
+            <div class="TarjetaMonstruo">
+                <div class="NombreTarjetaMonstruo">0000. Jakpack</div>
+                <div class="ImagenFondoMonstruo">
+                </div>
+                <div class="ApartadoAbajo">
+                    <div class="RarezaMonstruo"></div>
+                    <div class="ElementosMonstruo">
+                    
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+<script src="js/global.js"></script>
+<script src="js/monstergram.js"></script>
+</html>

@@ -1,0 +1,102 @@
+const PlantillaTarjeta = document.querySelector(".TarjetaMonstruo");
+const ContenedorTarjetas = document.querySelector("#ConjuntoMonstruos");
+
+PlantillaTarjeta.remove();
+
+fetch(url_endpoint + "/Monstergram").then(recurso => recurso.json()).then( monstruos => {
+    console.log(monstruos);
+    for(i = 0; i < monstruos.length; i++){
+        const clon_tarjeta = PlantillaTarjeta.cloneNode(true);
+        ContenedorTarjetas.appendChild(clon_tarjeta);
+
+        const TarjetaNombre = clon_tarjeta.querySelector(".NombreTarjetaMonstruo");
+        TarjetaNombre.innerHTML = monstruos[i].number + ". " + monstruos[i].name;
+
+        clon_tarjeta.style.backgroundImage = "url("+ monstruos[i].sprites.adult +")";
+
+        const Elemento = clon_tarjeta.querySelector(".ElementosMonstruo");
+
+        if(monstruos[i].elements.length == 2){
+            console.log("Elemento doble detectado");
+            const clon_elementos = Elemento.cloneNode(true);
+            const Cont_abajo = clon_tarjeta.querySelector(".ApartadoAbajo");
+
+            Cont_abajo.appendChild(clon_elementos);
+            AgregarElemento(clon_elementos, monstruos[i].elements[1]);
+        }
+
+        AgregarElemento(Elemento, monstruos[i].elements[0]);
+
+        const Rareza = clon_tarjeta.querySelector(".RarezaMonstruo");
+
+        AgregarRareza(Rareza, monstruos[i].rarity);
+
+        const nombre = monstruos[i].name;
+        clon_tarjeta.addEventListener("click", () => {
+            sessionStorage.setItem("monstruo_buscar", nombre);
+            window.location = "view.html";
+        });
+    }
+});
+
+function AgregarRareza(objeto_ha_cambiar, rareza){
+    switch(rareza){
+        case "Common":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-common.webp')";
+        break;
+        case "Uncommon":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-uncommon.webp')";
+        break;
+        case "Rare":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-rare.webp')";
+        break;
+        case "Epic":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-epic.webp')";
+        break;
+        case "Legendary":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-legendary.webp')";
+        break;
+        case "Mythic":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-mythic.webp')";
+        break;
+    }
+}
+
+function AgregarElemento(objeto_ha_cambiar, elemento){
+    switch(elemento){
+        case "Fire":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-fire.webp')";
+        break;
+        case "Nature":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-nature.webp')";
+        break;
+        case "Water":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-water.webp')";
+        break;
+        case "Thunder":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-thunder.webp')";
+        break;
+        case "Earth":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-earth.webp')";
+        break;
+        case "Light":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-light.webp')";
+        break;
+        case "Dark":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-dark.webp')";
+        break;
+        case "Magic":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-magic.webp')";
+        break;
+        case "Metal":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-metal.webp')";
+        break;
+        case "Special":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-legendary.webp')";
+        break;
+        
+        default:
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-fire.webp')";
+        break;
+    }
+}

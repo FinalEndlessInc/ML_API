@@ -8,9 +8,6 @@ const HabilidadUlt = PaginaAgregar.querySelector("#habilidad_ult");
 const ContenedorAtributos = PaginaAgregar.querySelector("#ContenedorAtributos");
 const Libros = PaginaAgregar.getElementsByClassName("libros");
 
-
-const direccion = "http://localhost:3001/monstergram/";
-
 const Nombre = PaginaAgregar.querySelector(".nombre");
 const ID = PaginaAgregar.querySelector(".numero");
 const Descripcion = PaginaAgregar.querySelector(".Descripcion");

@@ -6,14 +6,17 @@ const puerto = 3001;
 const direccion = "http://localhost:" + puerto
 
 
-var arregloMonstruos = [];
+
 var nombreArchivosMonstruos;
+var arregloMonstruos = [];
 
 function TraerArchivos(){
+    var Monstruos = [];
     nombreArchivosMonstruos = fs.readdirSync("./json/monstergram");
     for(i=0; i < nombreArchivosMonstruos.length; i++){
-        arregloMonstruos.push(JSON.parse(fs.readFileSync("./json/monstergram/" + nombreArchivosMonstruos[i]).toString()));
+        Monstruos.push(JSON.parse(fs.readFileSync("./json/monstergram/" + nombreArchivosMonstruos[i]).toString()));
     }
+    arregloMonstruos = Monstruos;
 }
 
 
@@ -28,104 +31,115 @@ const server = http.createServer((request, response) => {
             // Traer info de monstruos del directorio y agregarlos a un arreglo
             
             TraerArchivos();
-            
-            if(request.url == "/"){
-                response.statusCode = 200;
-                response.setHeader("Content-Type", "text/html; charset=utf-8");
 
-                var arreglo_endpoints = [];
-                for(i=0; i < nombreArchivosMonstruos.length; i++){
-                    arreglo_endpoints.push(direccion + "/monstergram/"+ arregloMonstruos[i].name);
-                }
-                for(i=0; i < nombreArchivosMonstruos.length; i++){
-                    arreglo_endpoints.push(direccion + "/monstergram/" + arregloMonstruos[i].number);
-                }
+            switch(request.url){
+                case "/":
+                    response.statusCode = 200;
+                    response.setHeader("Content-Type", "text/html; charset=utf-8");
 
-                var lista_html = "<ul>";
-                for(i=0; i<arreglo_endpoints.length; i++){
-                    lista_html += "<li>" + arreglo_endpoints[i] + "</li>";
-                }
-                lista_html += "</ul>";
+                    var arreglo_endpoints = [];
+                    for(i=0; i < nombreArchivosMonstruos.length; i++){
+                        arreglo_endpoints.push(direccion + "/monstergram/"+ arregloMonstruos[i].name);
+                    }
+                    for(i=0; i < nombreArchivosMonstruos.length; i++){
+                        arreglo_endpoints.push(direccion + "/monstergram/" + arregloMonstruos[i].number);
+                    }
 
-                response.end("<h1>Si jaló, tú</h1>" + lista_html);
-            
-            }
-            if(request.url == "/MonstruosRandom"){
-                TraerArchivos();
+                    var lista_html = "<ul>";
+                    for(i=0; i<arreglo_endpoints.length; i++){
+                        lista_html += "<li>" + arreglo_endpoints[i] + "</li>";
+                    }
+                    lista_html += "</ul>";
 
-                var primer_random = randomInt(0, arregloMonstruos.length);
-                var monstruos_ha_mandar = [{
-                    name: arregloMonstruos[primer_random].name,
-                    number: arregloMonstruos[primer_random].number,
-                    sprite: arregloMonstruos[primer_random].sprites.adult,
-                    rarity: arregloMonstruos[primer_random].rarity,
-                    elements: arregloMonstruos[primer_random].elements
-                }];
-
-
+                    response.end("<h1>Si jaló, tú</h1>" + lista_html);
+                break;
                 
-                while(monstruos_ha_mandar.length != 6){
-                    const monstruo_random = arregloMonstruos[randomInt(0,arregloMonstruos.length)];
-                    var monstruo_repetido = false;
+                case "/Monstergram":
+                    response.statusCode = 200;
+                    response.setHeader("Content-Type", "application/json");
+                    response.end(JSON.stringify(arregloMonstruos));
+                break;
 
-                    // Verificador que no se repitan
-                    for(j = 0; j < monstruos_ha_mandar.length; j++){
-                        //console.log(monstruo_random.name + " /" + monstruos_ha_mandar[j].name);
-                        if(monstruo_random.name == monstruos_ha_mandar[j].name){
-                            monstruo_repetido = true;
-                            //console.log("Monstruo Repetido - Saliendo...");
+                case "/MonstruosRandom":
+                    TraerArchivos();
+
+                    var primer_random = randomInt(0, arregloMonstruos.length);
+                    var monstruos_ha_mandar = [{
+                        name: arregloMonstruos[primer_random].name,
+                        number: arregloMonstruos[primer_random].number,
+                        sprite: arregloMonstruos[primer_random].sprites.adult,
+                        rarity: arregloMonstruos[primer_random].rarity,
+                        elements: arregloMonstruos[primer_random].elements
+                    }];
+
+
+                    
+                    while(monstruos_ha_mandar.length != 6){
+                        const monstruo_random = arregloMonstruos[randomInt(0,arregloMonstruos.length)];
+                        var monstruo_repetido = false;
+
+                        // Verificador que no se repitan
+                        for(j = 0; j < monstruos_ha_mandar.length; j++){
+                            //console.log(monstruo_random.name + " /" + monstruos_ha_mandar[j].name);
+                            if(monstruo_random.name == monstruos_ha_mandar[j].name){
+                                monstruo_repetido = true;
+                                //console.log("Monstruo Repetido - Saliendo...");
+                                break;
+                            }
+                        }
+                        if(monstruo_repetido != true){
+                            //console.log("Monstruo no es repetido, agregando...");
+
+                            monstruos_ha_mandar.push({
+                                    name: monstruo_random.name,
+                                    number: monstruo_random.number,
+                                    sprite: monstruo_random.sprites.adult,
+                                    rarity: monstruo_random.rarity,
+                                    elements: monstruo_random.elements
+                            });
+                        }
+                    }
+                    /*for(i =0; i < monstruos_ha_mandar.length; i++){
+                        console.log(monstruos_ha_mandar[i].name);
+                    }*/
+                    response.statusCode = 200;
+                    response.setHeader("Content-Type", "application/json");
+                    response.end(JSON.stringify(monstruos_ha_mandar));
+                break;
+                default:
+                    var monstruoEncontrado = false;
+                    for(i=0; i < arregloMonstruos.length; i++){
+                        const monstruo_actual = arregloMonstruos[i];
+                        var nombre_monstruo_actual = "";
+                        if(monstruo_actual.name.includes(" ")){
+                            nombre_monstruo_actual = monstruo_actual.name.replace(" ", "-");
+                        }else{
+                            nombre_monstruo_actual = monstruo_actual.name
+                        }
+                        
+                        //console.log(nombre_monstruo_actual + " " + request.url.replace("%20", "-"))
+                        if(request.url.toLowerCase().replace("%20", "-") == "/monstergram/" + nombre_monstruo_actual.toLowerCase() || request.url.toLowerCase() == "/monstergram/" + monstruo_actual.number){
+                            response.statusCode = 200;
+                            response.setHeader("Content-Type", "application/json");
+                            response.end(JSON.stringify(monstruo_actual));
+                            monstruoEncontrado = true;
                             break;
                         }
                     }
-                    if(monstruo_repetido != true){
-                        //console.log("Monstruo no es repetido, agregando...");
 
-                        monstruos_ha_mandar.push({
-                                name: monstruo_random.name,
-                                number: monstruo_random.number,
-                                sprite: monstruo_random.sprites.adult,
-                                rarity: monstruo_random.rarity,
-                                elements: monstruo_random.elements
-                        });
-                    }
-                }
-                /*for(i =0; i < monstruos_ha_mandar.length; i++){
-                    console.log(monstruos_ha_mandar[i].name);
-                }*/
-                response.statusCode = 200;
-                response.setHeader("Content-Type", "application/json");
-                response.end(JSON.stringify(monstruos_ha_mandar));                        
-            }
-            else{
-                var monstruoEncontrado = false;
-                for(i=0; i < arregloMonstruos.length; i++){
-                    const monstruo_actual = arregloMonstruos[i];
-                    var nombre_monstruo_actual = "";
-                    if(monstruo_actual.name.includes(" ")){
-                        nombre_monstruo_actual = monstruo_actual.name.replace(" ", "-");
-                    }else{
-                        nombre_monstruo_actual = monstruo_actual.name
-                    }
-                    
-                    //console.log(nombre_monstruo_actual + " " + request.url.replace("%20", "-"))
-                    if(request.url.toLowerCase().replace("%20", "-") == "/monstergram/" + nombre_monstruo_actual.toLowerCase() || request.url.toLowerCase() == "/monstergram/" + monstruo_actual.number){
-                        response.statusCode = 200;
+                    if(monstruoEncontrado == false){
+                        response.statusCode = 404;
                         response.setHeader("Content-Type", "application/json");
-                        response.end(JSON.stringify(monstruo_actual));
-                        monstruoEncontrado = true;
-                        break;
+                        response.end(JSON.stringify({
+                            message: "No he podido encontrar a ese monstruo"
+                        }));    
                     }
-                }
-            if(monstruoEncontrado == false){
-                    response.statusCode = 404;
-                    response.setHeader("Content-Type", "application/json");
-                    response.end(JSON.stringify({
-                        message: "No he podido encontrar a ese monstruo"
-                    }));    
-                }
-        }
-
+                break;
+            }
+            
         break;
+
+        
 
         // POST -------------------------------------------------------------------------------------------------------------
         case "POST":
@@ -271,31 +285,31 @@ const server = http.createServer((request, response) => {
         case "DELETE":
             var informacion = "";
             request.on("data", info => {
-                informacion += info;
+               informacion += info 
             });
-
-            const objeto_monstruo_borrar = JSON.parse(informacion);
-            var monstruo_encontrado = false;
-
-            for(i = 0; i < arregloMonstruos.length; i++){
-                console.log(objeto_monstruo_borrar.name);
-                console.log(arregloMonstruos[i].name);
-                if(objeto_monstruo_borrar.name == arregloMonstruos[i].name){
-                    monstruo_encontrado = true;
-                    break;
-                }
-            }
-            if(monstruoEncontrado == false){
-                console.log(err);
-                response.statusCode = 404;
-                response.setHeader("Content-Type", "application/json");
-                response.end(JSON.stringify({
-                    message: "Monster was not found or doesn't exist"
-                }));
-                return;
-            }
-
             request.on("end", () => {
+                const objeto_monstruo_borrar = JSON.parse(informacion);
+                console.log(objeto_monstruo_borrar);
+                var monstruo_encontrado = false;
+
+                for(i = 0; i < arregloMonstruos.length; i++){
+                    console.log(objeto_monstruo_borrar.name);
+                    console.log(arregloMonstruos[i].name);
+                    if(objeto_monstruo_borrar.name == arregloMonstruos[i].name){
+                        monstruo_encontrado = true;
+                        break;
+                    }
+                }
+
+                if(monstruoEncontrado != true){
+                    response.statusCode = 404;
+                    response.setHeader("Content-Type", "application/json");
+                    response.end(JSON.stringify({
+                        message: "Monster was not found or doesn't exist"
+                    }));
+                    return;
+                }
+
                 fs.unlink("./json/monstergram/" + objeto_monstruo_borrar.name.toLowerCase().replace(" ", "-") + ".json", err =>{
                     if(err){
                         console.log(err);
@@ -313,7 +327,6 @@ const server = http.createServer((request, response) => {
                     }
                 });
             });
-
             
         break;
 

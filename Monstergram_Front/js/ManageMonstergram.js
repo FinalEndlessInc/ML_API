@@ -11,9 +11,6 @@ const ContenedorAtributos = PaginaAgregar.querySelector("#ContenedorAtributos");
 const Libros = PaginaAgregar.getElementsByClassName("libros");
 const Inputs = PaginaAgregar.querySelector("input");
 
-
-const direccion = "http://localhost:3001/monstergram/";
-
 const Nombre = PaginaAgregar.querySelector(".nombre");
 const ID = PaginaAgregar.querySelector(".numero");
 const Descripcion = PaginaAgregar.querySelector(".Descripcion");
@@ -286,9 +283,7 @@ function BuscarMonstruo(){
     });
 }
 
-const BotonCambiarMonstruo = CargarBusqueda.querySelector(".BotonFinal");
-
-BotonCambiarMonstruo.addEventListener("click", function(){
+function EditarMonstruo(){
 
     if(Nombre.value == ""){
         alert("No se ha seleccionado ningun monstruo");
@@ -415,7 +410,7 @@ BotonCambiarMonstruo.addEventListener("click", function(){
             window.location.reload()
         }
     }));
-});
+}
 
 function AgregarHabilidad(){
     const clon_skills = PlantillaHabilidad.cloneNode(true);

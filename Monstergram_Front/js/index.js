@@ -26,8 +26,41 @@ fetch(url_endpoint + "/MonstruosRandom").then(recurso => recurso.json()).then( m
         }
 
         AgregarElemento(Elemento, monstruos[i].elements[0]);
+
+        const Rareza = clon_tarjeta.querySelector(".RarezaMonstruo");
+
+        AgregarRareza(Rareza, monstruos[i].rarity);
+
+        const nombre = monstruos[i].name;
+        clon_tarjeta.addEventListener("click", () => {
+            sessionStorage.setItem("monstruo_buscar", nombre);
+            window.location = "view.html";
+        })
     }
 });
+
+function AgregarRareza(objeto_ha_cambiar, rareza){
+    switch(rareza){
+        case "Common":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-common.webp')";
+        break;
+        case "Uncommon":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-uncommon.webp')";
+        break;
+        case "Rare":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-rare.webp')";
+        break;
+        case "Epic":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-epic.webp')";
+        break;
+        case "Legendary":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-legendary.webp')";
+        break;
+        case "Mythic":
+            objeto_ha_cambiar.style.backgroundImage = "url('./img/Ic-mythic.webp')";
+        break;
+    }
+}
 
 function AgregarElemento(objeto_ha_cambiar, elemento){
     console.log("Entramos a la funcion");

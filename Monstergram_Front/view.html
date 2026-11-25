@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML API</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/view.css">
+    <link rel="shortcut icon" href="img/ML_api.ico" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div id="LogoPagina">
+            <img src="img/ml_api.png" alt="Logo">
+        </div>
+        <div id="EnlacesSuperior">
+            <a href="index.html" class="enlaces_encabezado">Home</a>
+            <a href="monstergram.html" class="enlaces_encabezado">Monstergram</a>
+            <a href="" class="enlaces_encabezado">Documentation</a>
+            <div id="BotonManejoMonstruo" onclick="DesplegarLista()">
+                Manage
+            </div>
+            <div id="ListaEdicion">
+                <ul>
+                    <a href="add_monster.html"><li id="Btn_AgregarMonstruo">Add Monster +</li></a>
+                    <a href="ManageMonstergram.html"><li id="Btn_EditarMonstruo">Edit Monster %</li></a>
+                    <a href="delete_monster.html"><li id="Btn_BorrarMonstruo">Delete Monster X</li></a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="ApartadoBuscador">
+        <input type="text" id="InputBuscarMonstruo">
+        <div id="BotonBuscar"></div>
+    </div>
+
+    <div id="VerMonstruo">
+        <div id="ParteIzquierda">
+            <div id="VerSprites">
+                <div class="Btn_Imagenes">
+                    2
+                </div>
+                <div class="Btn_Imagenes">
+                    1
+                </div>
+                <div class="Btn_Imagenes">
+                    0
+                </div>
+            </div>
+            <div id="InfoMonstruo">
+                Id y nombre
+            </div>
+            <div id="ContenedorImagen">
+                <div id="ImagenPrincipal">
+                    
+                </div>
+            </div>
+
+            <div id="VerCodigo">
+                <button id="Btn_VerArchivoJSON">JSON File</button>
+            </div>
+
+        </div>
+
+        <div id="ParteDerecha">
+            <div id="ContenedorInformacion">
+                <div class="Pestana Pst_1">
+                    Info
+                </div>
+                <div class="Pestana Pst_2">
+                    Lore
+                </div>
+                <div class="Pestana Pst_3">
+                    Skills
+                </div>
+                <div id="ApartadoInfoGeneral">
+                    <div class="RankStats">
+                        <div class="Rank">Rank 0</div>
+                        <div class="Ctn_Estrellas">
+                            <div class="stars"></div>
+                            <div class="stars"></div>
+                            <div class="stars"></div>
+                            <div class="stars"></div>
+                            <div class="stars"></div>
+                        </div>
+                    </div>
+
+                    <div class="PlantillaStats">
+                        <div class="Life">Life: 0000</div>
+                        <div class="Power">Power: 0000</div>
+                        <div class="Speed">Speed: 0000</div>
+                        <div class="Stamina">Stamina: 000</div>
+                    </div>
+                    <h4>Traits:</h4>
+                    <div class="Ctn_Atributos">
+                        <div class="Atributo">Trait</div>
+                    </div>
+                    <h4>Relics:</h4>
+                    <div class="Ctn_Reliquias">
+                        <div class="Reliquia">Sword</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ApartadoLore">
+                <div id="Descripcion">
+                    Description
+                </div>
+                <h4>Books: </h4>
+                <div id="Cnt_Libros">
+                    <div class="Libro">Book 1</div>
+                </div>
+            </div>
+
+            
+
+            <div id="ApartadoHabilidades">
+                <div id="ContenedorHabilidades">
+                    <div class="PlantillaHabilidad">
+                        <h4 class="ss_nombre">Nombre</h4><br>
+                        <div class="ss_descripcion">Descripcion</div><br>
+                        <div class="ss_tipo">Type</div>
+                        <div class="ss_objetivo">Target</div><br>
+                        <h5>Effects:</h5>
+                        <div class="ctn_ss_efectos">
+                            <div class="ss_efecto">Effect</div>
+                        </div>
+                        <div class="ss_precision">Precision</div>
+                        <div class="ss_danio">Damage</div>
+                        <div class="ss_stamina">Stamina</div>
+                        <div class="ss_recuperacion">Cooldown</div>
+                    </div><br>
+
+                    <div id="ult">
+                        <h3>Ult Ability</h3>
+                        <h4 class="ult_nombre">Name</h4>
+                        <div class="ult_descripcion">Description</div>
+                        <div class="ult_target">Objetivo</div><br>
+                        <div class="cont_ult_efectos">
+                            <div class="ult_efecto">Efecto</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    <div>Ingresa un monstruo para editar</div>
+    <input type="text">
+    <button onclick="BuscarMonstruo()">Buscar</button>
+
+    <div id="apartado_monstruo_prueba" style="display:none">
+        <div class="nombre">Nombre:</div>
+        <div class="numero">ID: </div>
+        <div class="elementos"> Elemento(s):</div>
+        <div class="Descripcion"> Descripcion:</div>
+
+    </div>
+    -->
+
+    
+</body>
+<script src="js/global.js"></script>
+<script src="js/view.js"></script>
+</html>

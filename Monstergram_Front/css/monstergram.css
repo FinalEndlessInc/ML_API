@@ -1,0 +1,66 @@
+#ExplorarMonstruos{
+    float: left;
+    margin: 5%;
+    width: 90%;
+    /*background-color: #255E71;*/
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.TarjetaMonstruo{
+    float: left;
+    position: relative;
+    height: 200px;
+    width: 150px;
+    background-color: #0e0e21;
+    background-size: 180%;
+    background-repeat: no-repeat;
+    background-position-x: -75px;
+    background-position-y: 25px;
+    border-radius: 15px;
+    border: solid 3px #3892A4;
+    margin: 20px 40px;
+    box-shadow: -5px 5px 15px #0e0e21;
+    transform: scale(110%);
+}
+
+.TarjetaMonstruo:hover{
+    cursor: pointer;
+    filter: brightness(120%);
+}
+
+
+.NombreTarjetaMonstruo{
+    top: 0;
+    width: calc(100% - 5px);
+    height: 30px;
+    background-color: rgba(2, 8, 21, 0.6);
+    border-radius: 15px 15px 0px 0px;
+    font-size: small;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+    
+}
+
+.ApartadoAbajo{
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: calc(100% - 10px);
+    height: 40px;
+    align-items: center;
+    background-color: rgba(2, 8, 21, 0.6);
+    padding: 0 5px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.ElementosMonstruo, .RarezaMonstruo{
+    height: 30px;
+    width: 30px;
+    margin-left: 1px;
+    background-size:contain;
+    background-repeat: no-repeat;
+}
