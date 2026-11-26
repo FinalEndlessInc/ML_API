@@ -1,0 +1,15 @@
+Para ejecutar la API: 
+Solo se escribe el comando "node ml_api.js" dentro de la terminal y ya se estará ejecutando. 
+IMPORTANTE tener node.js descargado.
+
+Para el frontend:
+Con que la API este activa, el frontend funcionará para cargar datos de monstruos.
+
+!! La pagina de documentación.html no está disponible por el momento !!
+[Falta de tiempo]
+
+
+Toda respuesta de la API se regresa en un objeto de JSON, incluyendo datos pedidos y mensajes de respuesta.
+
+
+Si se cambian archivos de monstruos manualmente desde los archivos json, no afecta el funcionamiento, con tal de que no se borren los nombre de los objetos. Estos pueden estar vacíos sin problema, pero tiene que existir el objeto o arreglo mínimo.
